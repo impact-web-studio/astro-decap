@@ -3,61 +3,28 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'Homes',
-      links: [
-        {
-          text: 'SaaS',
-          href: getPermalink('/homes/saas'),
-        },
-        {
-          text: 'Startup',
-          href: getPermalink('/homes/startup'),
-        },
-        {
-          text: 'Mobile App',
-          href: getPermalink('/homes/mobile-app'),
-        },
-        {
-          text: 'Personal',
-          href: getPermalink('/homes/personal'),
-        },
-      ],
+      text: 'Home',
+      href: '/',
     },
     {
-      text: 'Pages',
+      text: 'About',
       links: [
         {
-          text: 'Features (Anchor Link)',
-          href: getPermalink('/#features'),
-        },
-        {
-          text: 'Services',
-          href: getPermalink('/services'),
-        },
-        {
-          text: 'Pricing',
-          href: getPermalink('/pricing'),
-        },
-        {
-          text: 'About us',
+          text: 'About Us',
           href: getPermalink('/about'),
         },
         {
-          text: 'Contact',
-          href: getPermalink('/contact'),
+          text: 'FAQs',
+          href: getPermalink('/faqs'),
         },
         {
-          text: 'Terms',
-          href: getPermalink('/terms'),
-        },
-        {
-          text: 'Privacy policy',
-          href: getPermalink('/privacy'),
+          text: 'Reviews',
+          href: getPermalink('/reviews'),
         },
       ],
     },
     {
-      text: 'Landing',
+      text: 'Services',
       links: [
         {
           text: 'Lead Generation',
@@ -86,82 +53,54 @@ export const headerData = {
       ],
     },
     {
-      text: 'Blog',
-      links: [
-        {
-          text: 'Blog List',
-          href: getBlogPermalink(),
-        },
-        {
-          text: 'Article',
-          href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
-        },
-        {
-          text: 'Article (with MDX)',
-          href: getPermalink('markdown-elements-demo-post', 'post'),
-        },
-        {
-          text: 'Category Page',
-          href: getPermalink('tutorials', 'category'),
-        },
-        {
-          text: 'Tag Page',
-          href: getPermalink('astro', 'tag'),
-        },
-      ],
+      text: 'Pricing',
+      href: '/pricing',
     },
     {
-      text: 'Widgets',
-      href: '#',
+      text: 'Articles',
+      href: getPermalink('/blog'),
     },
   ],
-  actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
+  actions: [{ text: 'Get Started', href: '/contact', target: '_blank' }],
 };
 
 export const footerData = {
   links: [
     {
-      title: 'Product',
+      title: 'Quick Links',
       links: [
-        { text: 'Features', href: '#' },
-        { text: 'Security', href: '#' },
-        { text: 'Team', href: '#' },
-        { text: 'Enterprise', href: '#' },
-        { text: 'Customer stories', href: '#' },
+        { text: 'Home', href: '#' },
+        { text: 'About', href: '#' },
+        { text: 'Services', href: '#' },
         { text: 'Pricing', href: '#' },
-        { text: 'Resources', href: '#' },
+        { text: 'Articles', href: '#' },
+        { text: 'Contact', href: '#' },
       ],
     },
     {
-      title: 'Platform',
+      title: 'About',
       links: [
-        { text: 'Developer API', href: '#' },
-        { text: 'Partners', href: '#' },
-        { text: 'Atom', href: '#' },
-        { text: 'Electron', href: '#' },
-        { text: 'AstroWind Desktop', href: '#' },
+        { text: 'About Us', href: '#' },
+        { text: 'FAQs', href: '#' },
+        { text: 'Reviews', href: '#' },
       ],
     },
     {
-      title: 'Support',
+      title: 'Services',
       links: [
-        { text: 'Docs', href: '#' },
-        { text: 'Community Forum', href: '#' },
-        { text: 'Professional Services', href: '#' },
-        { text: 'Skills', href: '#' },
-        { text: 'Status', href: '#' },
+        { text: 'Web Design', href: '#' },
+        { text: 'Web Development', href: '#' },
+        { text: 'Workflow Automations', href: '#' },
+        { text: 'Employee Management System', href: '#' },
+        { text: 'Software Integrations', href: '#' },
       ],
     },
     {
       title: 'Company',
       links: [
-        { text: 'About', href: '#' },
-        { text: 'Blog', href: '#' },
+        { text: 'Whatsapp: +1 (647) 767 - 8840', href: '#' },
+        { text: 'Email: info@impactwebstudio.ca', href: '#' },
         { text: 'Careers', href: '#' },
-        { text: 'Press', href: '#' },
-        { text: 'Inclusion', href: '#' },
-        { text: 'Social Impact', href: '#' },
-        { text: 'Shop', href: '#' },
       ],
     },
   ],
@@ -169,15 +108,14 @@ export const footerData = {
     { text: 'Terms', href: getPermalink('/terms') },
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
   ],
-  socialLinks: [
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
-    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
-  ],
+  // socialLinks: [
+  //   { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
+  //   { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
+  //   { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
+  //   { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
+  //   { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
+  // ],
   footNote: `
-    <img class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm" src="https://onwidget.com/favicon/favicon-32x32.png" alt="onWidget logo" loading="lazy"></img>
-    Made by <a class="text-blue-600 underline dark:text-muted" href="https://onwidget.com/"> onWidget</a> · All rights reserved.
+    Designed & Developed by <a class="text-blue-600 underline dark:text-muted" href="https://impactwebstudio.ca/"> Impact Web Studio</a> · All rights reserved.
   `,
 };

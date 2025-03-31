@@ -13,7 +13,7 @@ import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'Impact Web Studio Inc. | Built with Astrowind and Tailwind CSS',
   ignoreTitleTemplate: true,
 };
 ---
@@ -25,26 +25,27 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
+        text: 'Get Started',
         href: 'https://github.com/onwidget/astrowind',
         target: '_blank',
-        icon: 'tabler:download',
+        icon: 'tabler:rocket',
       },
       { text: 'Learn more', href: '#features' },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
+    image={{ src: '~/assets/images/hero-image.png', alt: 'Impact Web Studio Hero Image' }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white highlight"> Astro 5.0</span> + Tailwind CSS
+      <p class="hidden xl:inline">Impact Web Studio</p>
+      <p class="text-accent dark:text-white highlight">Where Design and Functionality Meets</p>
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 5.0
-        + Tailwind CSS.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
+        We help service-based businesses get more bookings, automate client interactions, and establish a strong online
+        presence —
+        <span class="font-semibold">without the large upfront costs.</span>
+      </span>
+      <!-- <span class="block mb-1 sm:hidden font-bold text-blue-600">Impact Web Studio: Production-ready.</span> -->
       Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages &
       Blogs.
     </Fragment>
@@ -58,24 +59,24 @@ const metadata = {
 
   <Features
     id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022, 2023 and 2024."
+    tagline="Top Quality"
+    title="What You Get With Impact Web Studio"
+    subtitle="Professional, high-performance websites for service providers. Built, managed, and optimized—all for a simple monthly fee."
     items={[
       {
-        title: 'Astro + Tailwind CSS Integration',
+        title: 'Mobile-First Design',
         description:
           'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
         icon: 'tabler:brand-tailwind',
       },
       {
-        title: 'Ready-to-use Components',
+        title: 'Fully Responsive',
         description:
           'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
         icon: 'tabler:components',
       },
       {
-        title: 'Best Practices',
+        title: 'All-in-One Solution',
         description:
           'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
         icon: 'tabler:list-check',
@@ -93,7 +94,7 @@ const metadata = {
         icon: 'tabler:arrows-right-left',
       },
       {
-        title: 'Open to new ideas and contributions',
+        title: 'Satisfaction Guaranteed',
         description:
           'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
         icon: 'tabler:bulb',
@@ -105,21 +106,21 @@ const metadata = {
 
   <Content
     isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
+    tagline="What We Offer"
+    title="Affordable Websites Packages"
     items={[
       {
-        title: 'Built on top of Astro 5.0',
+        title: 'Responsive Design',
         description:
           'Benefiting from the performance and developer-friendly features of this modern static site generator.',
       },
       {
-        title: 'Styled using Tailwind CSS',
+        title: 'Full Website Development',
         description:
           'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
       },
       {
-        title: 'Cross-browser compatibility',
+        title: 'Website Hosting & Unlimited Edits',
         description:
           'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
       },
@@ -130,8 +131,13 @@ const metadata = {
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-      Gain a competitive advantage by incorporating industry leading practices
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        We offer websites starting at <span class="font-semibold text-primary">$0 down</span> and <span
+          class="font-semibold text-primary">$175/month</span
+        >
+      </h3>
+      Pay $0 down for a standard 5 page small business website. If you need more than that then we have to do custom pricing
+      based on the scope of work, number of additional pages, and time involved. 12 month minimum contract.
     </Fragment>
 
     <Fragment slot="bg">
@@ -145,23 +151,22 @@ const metadata = {
     isAfterContent
     items={[
       {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
+        title: 'Client Relationship Management (CRM) Systems',
+        description: `All our websites come equipped with a CRM system to ensure your clients are managed effectively and efficiently. This includes a customer booking system, client database, and more.`,
       },
       {
-        title: 'Multiple layout possibilities',
-        description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
+        title: 'Accept Online Payments',
+        description: 'Each website comes integrated with an online payment processor of your choice.',
       },
       {
-        title: 'Fully responsive design',
+        title: 'Google Business Profile Setup',
         description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
+          "Showcase your company's legitimacy and credibility by setting up a Google Business Profile and making it easier for customers to find you.",
       },
       {
-        title: 'Integration of media',
+        title: 'Content Management System (CMS) Setup',
         description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
+          'Every website comes with a CMS system that allows you to easily add content to your website, such as articles and blog posts, without needing to know how to code.',
       },
     ]}
     image={{
@@ -169,7 +174,7 @@ const metadata = {
       alt: 'Blueprint Image',
     }}
   >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
+    <Fragment slot="content">More than just a website. Create a system that works for you.</Fragment>
 
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -183,23 +188,19 @@ const metadata = {
     isAfterContent
     items={[
       {
-        title: 'Enhanced user engagement',
+        title: 'E-commerce Integration',
         description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
+          'Sell your products and services online with ease. We offer Shopify integrations with certified Shopify partners to ensure your integration and shop is set up correctly.',
       },
       {
-        title: 'Continuous improvement',
+        title: 'Workflow Automation and Improvements',
         description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
+          'Reduce the amount of repetitve administrative tasks you do by automating them. We offer workflow automation solutions that integrate with your existing systems to ensure you never drop the ball.',
       },
       {
-        title: 'Time and resource efficiency',
+        title: 'ERP Solutions',
         description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      },
-      {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
+          'For larger businesses with more complex workflows, we offer ERP solutions to ensure your business runs smoothly and efficiently. We partner with certified ERP implementation partners to ensure your business is set up correctly.',
       },
     ]}
     image={{
@@ -207,7 +208,7 @@ const metadata = {
       alt: 'Astronauts Image',
     }}
   >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
+    <Fragment slot="content">For growing businesses, we also offer:</Fragment>
 
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -217,25 +218,25 @@ const metadata = {
   <!-- Steps Widget ****************** -->
 
   <Steps
-    title="Get your dream website up and running in no time with AstroWind."
+    title="Get your dream website up and running in no time with Impact Web Studio."
     items={[
       {
-        title: 'Step 1: <span class="font-medium">Download</span>',
+        title: 'Step 1: <span class="font-medium">Consult</span>',
         description:
-          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
+          "We first start with a complete questionnaire to understand your business, your goals, and your vision. We'll then schedule a call to discuss your project in more detail.",
+        icon: 'tabler:message-circle',
       },
       {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
+        title: 'Step 2: <span class="font-medium">Design</span>',
         description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
+          "We'll create a custom design for your website that reflects your brand and your vision. We'll then send you a preview of the design for your feedback and approval.",
         icon: 'tabler:letter-case',
       },
       {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
+        title: 'Step 3: <span class="font-medium">Develop</span>',
         description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
+          'Once approved, we will develop your website using the latest technologies and best practices. We will keep you updated throughout the process.',
+        icon: 'tabler:code',
       },
       {
         title: 'Ready!',
@@ -251,57 +252,57 @@ const metadata = {
   <!-- Features2 Widget ************** -->
 
   <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
+    title="Deliberately Crafted for Service Providers"
+    subtitle="We create websites specifically for service-based businesses. Whether you're a contractor, small business owners, or buying a new business. We want to make your life easier so that you can focus on growing your business"
+    tagline="Who It's For"
     items={[
       {
-        title: 'Headers',
+        title: 'Sports & Fitness',
         description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
         icon: 'flat-color-icons:template',
       },
       {
-        title: 'Heros',
+        title: 'Beauty & Wellness',
         description:
           "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
         icon: 'flat-color-icons:gallery',
       },
       {
-        title: 'Features',
+        title: 'Events & Entertainment',
         description:
           'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
         icon: 'flat-color-icons:approval',
       },
       {
-        title: 'Content',
+        title: 'Coaches & Consultants',
         description:
           "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
         icon: 'flat-color-icons:document',
       },
       {
-        title: 'Call-to-Action',
+        title: 'Home & Trade Services',
         description:
           'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
         icon: 'flat-color-icons:advertising',
       },
       {
-        title: 'Pricing',
+        title: 'Pet Services',
         description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
         icon: 'flat-color-icons:currency-exchange',
       },
       {
-        title: 'Testimonial',
+        title: 'Education',
         description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
         icon: 'flat-color-icons:voice-presentation',
       },
       {
-        title: 'Contact',
+        title: 'Automotive & Repair Services',
         description:
           'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
         icon: 'flat-color-icons:business-contact',
       },
       {
-        title: 'Footers',
+        title: 'Real Estate',
         description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
         icon: 'flat-color-icons:database',
       },
@@ -315,50 +316,47 @@ const metadata = {
   <!-- HighlightedPosts Widget ******* -->
 
   <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
-                `}
+    title="Latest News and Articles"
+    information={`Learn more about the operation of Impact Web Studio in our blog. The blog is used to display some of the thought processes that take place behind the scenes. Each article aims to provide insight into the what, why, and hows of our business and services.`}
   />
 
   <!-- FAQs Widget ******************* -->
 
   <FAQs
     title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
+    subtitle=`Dive into the following questions of some of our most common inquiries. If your question isn't answered below, please reach out directly to us.`
     tagline="FAQs"
     classes={{ container: 'max-w-6xl' }}
     items={[
       {
-        title: 'Why AstroWind?',
+        title: 'Why Impact Web Studio?',
         description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
+          "With so many web agencies out there, what makes Impact Web Studio different? We're a small team of dedicated professionals who are passionate about helping service-based businesses succeed. We do our best to understand the business needs, and build with the core of the business as the foundation to our work.",
       },
       {
         title: 'What do I need to start?',
         description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
+          'To get started, we ask that clients prepare an email with a brief description of their business, their goals, and their vision for their website. We will then schedule a call to discuss the project in more detail.',
       },
       {
-        title: 'How to install the Astro + Tailwind CSS template?',
+        title: 'What is your refund and cancellation policy?',
         description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
+          "We offer a 100% satifaction guaranteed policy. If you're not happy with the design of the website, we will work with you to make it right. If you're still not happy, we will refund your money. We also offer a 30-day money back guarantee. If you're not happy with the website within the first 30 days, we will refund your money.",
       },
       {
-        title: "What's something that you don't understand?",
+        title: 'How exactly does the monthly plan work?',
         description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
+          "Our monthly plans consist of $0 down and $175 per month with a 12 month minimum contract. The first month's payment goes towards the consultation and design work. We also offer other packages but this is our most popular and is to help businesses that are unable to afford to pay a large upfront cost for a website. We understand that sometimes it takes a bit of time to get traction going.",
       },
       {
-        title: 'What is something that you would like to try again?',
+        title: 'Do you offer custom packages?',
         description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
+          'Our most popular package is the monthly subscription - designed to help businesses kickstart their digital renovations and should suffice for the majority of businesses. However, if you have specific requirements, get in touch with our team and we can create a custom package for you.',
       },
       {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
+        title: 'What exactly do I get once the project is completed?',
         description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+          'Upon project completion, you will walk away with a fully functional website, including hosting, website and email domain, and unlimited edits. You will also have access to a CRM system, online payment processor, Google Business Profile setup, and a CMS system. We also offer ongoing support and maintenance to ensure your website is always up-to-date and running smoothly.',
       },
     ]}
   />
@@ -367,10 +365,10 @@ const metadata = {
 
   <Stats
     stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
+      { title: 'PageSpeed Score', amount: '90+' },
+      { title: 'Satification Guaranteed', amount: '100%' },
+      { title: 'Load Times', amount: '<1s' },
+      { title: 'Uptime', amount: '99.9%' },
     ]}
   />
 
@@ -380,20 +378,19 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/onwidget/astrowind',
+        text: 'Get Started',
+        href: '/contact',
         target: '_blank',
-        icon: 'tabler:download',
+        icon: 'tabler:rocket',
       },
     ]}
   >
     <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
+      Ready to Build Your Ideal Site?<br class="block sm:hidden" />
     </Fragment>
 
     <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
+      Build a website that works as hard as you do with<br class="hidden md:inline" /> Impact Web Studio
     </Fragment>
   </CallToAction>
 </Layout>

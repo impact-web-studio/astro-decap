@@ -11,5 +11,13 @@
   "yaml.schemas": {
     "./.vscode/astrowind/config-schema.json": "/src/config.yaml"
   },
-  "eslint.useFlatConfig": true
+  "eslint.useFlatConfig": true,
+  "workbench.colorCustomizations": {
+    "statusBar.background": "#ce7dea",
+    "statusBar.foreground": "#15202b",
+    "statusBarItem.hoverBackground": "#bd51e3",
+    "statusBarItem.remoteBackground": "#ce7dea",
+    "statusBarItem.remoteForeground": "#15202b"
+  },
+  "peacock.color": "#ce7dea"
 }
