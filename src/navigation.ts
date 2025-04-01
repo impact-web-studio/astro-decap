@@ -61,7 +61,7 @@ export const headerData = {
       href: getPermalink('/blog'),
     },
   ],
-  actions: [{ text: 'Get Started', href: '/contact', target: '_blank' }],
+  actions: [{ text: 'Get Started', href: '/contact' }],
 };
 
 export const footerData = {
