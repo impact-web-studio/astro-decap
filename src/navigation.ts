@@ -90,9 +90,9 @@ export const footerData = {
       links: [
         { text: 'Web Design', href: '#' },
         { text: 'Web Development', href: '#' },
-        { text: 'Workflow Automations', href: '#' },
-        { text: 'Employee Management System', href: '#' },
-        { text: 'Software Integrations', href: '#' },
+        { text: 'Shopify Integration', href: '#' },
+        { text: 'ERP Solutions', href: '#' },
+        { text: 'Custom Software Integration', href: '#' },
       ],
     },
     {
