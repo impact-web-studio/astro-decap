@@ -25,25 +25,28 @@ const metadata = {
 
   <Prices
     title="Our prices"
-    subtitle="Only pay for what you need"
+    subtitle="For specific non-ecommerce/erp requirements, please contact us for custom pricing."
     prices={[
       {
-        title: 'basic',
-        subtitle: 'Optimal choice for personal use',
-        price: 29,
-        period: 'per month',
+        title: 'Regular',
+        subtitle: 'Our regular pricing package with minimal monthly costs.',
+        price: 3500,
+        period: '+$25/month hosting',
         items: [
           {
-            description: 'Etiam in libero, et volutpat',
+            description: 'Design & Development',
           },
           {
-            description: 'Aenean ac nunc dolor tristique',
+            description: 'Website Hosting',
           },
           {
-            description: 'Cras scelerisque accumsan lib',
+            description: '5 Page Setup',
           },
           {
-            description: 'In hac habitasse',
+            description: 'Blog Setup',
+          },
+          {
+            description: 'Software Integrations',
           },
         ],
         callToAction: {
@@ -53,25 +56,28 @@ const metadata = {
         },
       },
       {
-        title: 'standard',
-        subtitle: 'Optimal choice for small teams',
-        price: 69,
-        period: 'Per Month',
+        title: 'Monthly',
+        subtitle: 'Optimal choice for small teams and startups with lower budget.',
+        price: 495,
+        period: '+150/Month',
         items: [
           {
-            description: 'Proin vel laoreet',
+            description: 'Design & Development',
           },
           {
-            description: 'Ut efficitur habitasse egestas',
+            description: 'Website Hosting',
           },
           {
-            description: 'Volutpat hac curabitur',
+            description: '5 Page Setup',
           },
           {
-            description: 'Pellentesque blandit ut nibh',
+            description: 'Unlimited Updates',
           },
           {
-            description: 'Donec fringilla sem',
+            description: '24/7 Support',
+          },
+          {
+            description: 'Lifetime Updates',
           },
         ],
         callToAction: {
@@ -83,22 +89,26 @@ const metadata = {
         ribbonTitle: 'popular',
       },
       {
-        title: 'premium',
-        subtitle: 'Optimal choice for companies',
-        price: 199,
-        period: 'Per Month',
+        title: 'Custom',
+        subtitle:
+          'Optimal choice for companies with specific business requirements, such as e-commerce or ERP systems.',
+        price: 12500,
+        period: 'Starting Price',
         items: [
           {
-            description: 'Curabitur suscipit risus',
+            description: 'Custom Shopify Store',
           },
           {
-            description: 'Aliquam habitasse malesuada',
+            description: 'Odoo ERP Implementation',
           },
           {
-            description: 'Suspendisse sit amet blandit',
+            description: 'Workflow Automations & Improvements',
           },
           {
-            description: 'Suspendisse auctor blandit dui',
+            description: 'Employee Platform Training',
+          },
+          {
+            description: 'Apps & Modules Integration',
           },
         ],
         callToAction: {
@@ -118,34 +128,34 @@ const metadata = {
     columns={2}
     items={[
       {
-        title: 'Tiered Pricing Plans',
+        title: 'Mobile-First and Fully Responsive Design',
         description: 'Choose from a range of pricing plans designed to accommodate different budgets and requirements.',
-        icon: 'tabler:stairs',
+        icon: 'tabler:devices',
       },
       {
-        title: 'Transparent Pricing',
+        title: 'Google Business Profile',
         description: 'Clearly displayed pricing details for each plan, with no hidden costs or unexpected charges.',
-        icon: 'tabler:flip-vertical',
+        icon: 'tabler:brand-google',
       },
       {
-        title: 'Secure Payment Methods',
+        title: 'Content Management System (CMS)',
         description: 'Secure payment gateways to protect your financial information during transactions.',
-        icon: 'tabler:shield-lock',
+        icon: 'tabler:blockquote',
       },
       {
-        title: 'Instant Access',
+        title: 'Appointment/Service Booking System',
         description: `Immediate access to your chosen plan's features and templates upon subscription.`,
-        icon: 'tabler:accessible',
+        icon: 'tabler:calendar-pin',
       },
       {
-        title: 'Upgrade Value',
+        title: 'Client Relationship Management (CRM)',
         description: 'Upgrade to higher-tier plans to unlock more features and benefits for an enhanced experience.',
-        icon: 'tabler:chevrons-up',
+        icon: 'tabler:user-circle',
       },
       {
-        title: '24H support',
+        title: 'Online Payment Processor Integration',
         description: 'Questions answered via live chat, email or phone, every calendar day.',
-        icon: 'tabler:headset',
+        icon: 'tabler:credit-card',
       },
     ]}
     classes={{ container: 'max-w-5xl' }}
