@@ -3,10 +3,32 @@ import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Image from '~/components/common/Image.astro';
+import { Icon } from 'astro-icon/components';
+
+import TorontoCnRogers from '~/assets/images/toronto-overview.webp';
 
 const metadata = {
   title: 'Contact',
 };
+
+// [Data]
+const CompanyInfo = [
+  {
+    field: 'Email',
+    value: 'info@impactwebstudio.ca',
+    link: 'mailto:info@impactwebstudio.ca',
+    icon: 'tabler:mail',
+  },
+  {
+    field: 'WhatsApp',
+    value: '+1 (647) 767-8840',
+    link: 'https://wa.me/16477678840',
+    icon: 'tabler:brand-whatsapp',
+  },
+];
 ---
 
 <Layout metadata={metadata}>
@@ -17,66 +39,134 @@ const metadata = {
     title="Let's Connect!"
   />
 
-  <ContactUs
-    id="form"
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
-    inputs={[
-      {
-        type: 'text',
-        name: 'name',
-        label: 'Name',
-      },
-      {
-        type: 'email',
-        name: 'email',
-        label: 'Email',
-      },
-    ]}
-    textarea={{
-      label: 'Message',
-    }}
-    disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
-    }}
-    description="Our support team typically responds within 24 business hours."
-  />
+  <!-- Contact Container -->
+  <WidgetWrapper containerClass={`max-w-7xl`}>
+    <div
+      class=`w-full h-fit max-w-wrapper-max mx-auto flex flex-col max-w-contain-max lg:max-w-content-max items-center gap-10 lg:items-start lg:flex-row lg:gap-10 lg:justify-between contain`
+    >
+      <div class="wrapper lg:max-w-1/2 flex flex-col gap-10">
+        <div class="image-wrapper overflow-hidden rounded-xl w-fit h-fit">
+          <Image
+            src={TorontoCnRogers}
+            alt="toronto overview"
+            height={500}
+            width={800}
+            class="object-cover"
+          />
+        </div>
+        <div class="flex flex-col gap-10">
+          <div class="description flex flex-col gap-5">
+            <p>
+              Send us an email and let us know everything you want out of a new site. We respond to everyone within 24
+              hours of contacting us.
+            </p>
+            <p>
+              Got questions? We got answers, check out our FAQs section below for answers to our most common inquiries.
+              If your question isn't there, let us know using the contact form to the right.
+            </p>
+          </div>
+          <ul class="flex flex-col gap-4">
+            {
+              CompanyInfo.map((info) => (
+                <li>
+                  <a
+                    href={info.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center space-x-5 text-muted
+    group-hover:text-primary"
+                  >
+                    <span class="icon-wrapper w-12 h-12 flex items-start justify-start text-primary transition-none">
+                      <Icon
+                        name={info.icon}
+                        class="h-full w-auto max-w-full max-h-full"
+                        style="aspect-ratio: 1;"
+                      />
+                    </span>
+                    <div class="group">
+                      <p class="capitalize font-semibold group-hover:text-primary">{info.field}</p>
+                      <p class="group-hover:text-primary">{info.value}</p>
+                    </div>
+                  </a>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+      <div class="w-full">
+        <!-- Contact Widget -->
+        <ContactUs
+          id="form"
+          title="Drop us a message today!"
+          subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
+          classes={{ container: 'lg:py-0 px-0' }}
+          inputs={[
+            {
+              type: 'text',
+              name: 'name',
+              label: 'Name',
+            },
+            {
+              type: 'email',
+              name: 'email',
+              label: 'Email',
+            },
+          ]}
+          textarea={{
+            label: 'Message',
+          }}
+          disclaimer={{
+            label:
+              'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+          }}
+          description="Our support team typically responds within 24 business hours."
+        />
+      </div>
+    </div>
+  </WidgetWrapper>
+  <!-- FAQs Widget ******************* -->
 
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="We are here to help!"
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle=`Dive into the following questions of some of our most common inquiries. If your question isn't answered below, please reach out directly to us.`
+    tagline="FAQs"
+    classes={{ container: 'max-w-6xl' }}
     items={[
       {
-        title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
-      },
-      {
-        title: 'Contact sales',
+        title: 'Why Impact Web Studio?',
         description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
+          "With so many web agencies out there, what makes Impact Web Studio different? We're a small team of dedicated professionals who are passionate about helping service-based businesses succeed. We do our best to understand the business needs, and build with the core of the business as the foundation to our work.",
       },
       {
-        title: 'Technical support',
+        title: 'What do I need to start?',
         description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
+          'To get started, we ask that clients prepare an email with a brief description of their business, their goals, and their vision for their website. We will then schedule a call to discuss the project in more detail.',
       },
       {
-        title: 'Phone',
-        description: '+1 (234) 567-890',
-        icon: 'tabler:headset',
+        title: 'What is your refund and cancellation policy?',
+        description:
+          "We offer a 100% satifaction guaranteed policy. If you're not happy with the design of the website, we will work with you to make it right. If you're still not happy, we will refund your money. We also offer a 30-day money back guarantee. If you're not happy with the website within the first 30 days, we will refund your money.",
       },
       {
-        title: 'Email',
-        description: 'contact@support.com',
-        icon: 'tabler:mail',
+        title: 'How exactly does the monthly plan work?',
+        description:
+          "Our monthly plans consist of $0 down and $175 per month with a 12 month minimum contract. The first month's payment goes towards the consultation and design work. We also offer other packages but this is our most popular and is to help businesses that are unable to afford to pay a large upfront cost for a website. We understand that sometimes it takes a bit of time to get traction going.",
       },
       {
-        title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
-        icon: 'tabler:map-pin',
+        title: 'Do you offer custom packages?',
+        description:
+          'Our most popular package is the monthly subscription - designed to help businesses kickstart their digital renovations and should suffice for the majority of businesses. However, if you have specific requirements, get in touch with our team and we can create a custom package for you.',
+      },
+      {
+        title: 'What exactly do I get once the project is completed?',
+        description:
+          'Upon project completion, you will walk away with a fully functional website, including hosting, website and email domain, and unlimited edits. You will also have access to a CRM system, online payment processor, Google Business Profile setup, and a CMS system. We also offer ongoing support and maintenance to ensure your website is always up-to-date and running smoothly.',
       },
     ]}
-  />
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </FAQs>
 </Layout>
