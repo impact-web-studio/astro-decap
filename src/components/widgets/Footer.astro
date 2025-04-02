@@ -1,7 +1,13 @@
 ---
 import { Icon } from 'astro-icon/components';
-import { SITE } from 'astrowind:config';
+import Image from '~/components/common/Image.astro';
+import { SITE, UI } from 'astrowind:config';
 import { getHomePermalink } from '~/utils/permalinks';
+import LogoDark from '~/assets/images/iws-logo.svg';
+import LogoLight from '~/assets/images/iws-logo-white.svg';
+
+const LogoThemeSelection = UI.theme == 'dark' ? LogoDark : LogoLight;
+console.log(UI.theme);
 
 interface Link {
   text?: string;
@@ -38,11 +44,33 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
     <div class="grid grid-cols-12 gap-4 gap-y-8 sm:gap-8 py-8 md:py-12">
       <div class="col-span-12 lg:col-span-4">
         <div class="mb-2">
-          <a
+          <!-- <a
             class="inline-block font-bold text-xl"
             href={getHomePermalink()}
             >{SITE?.name}</a
+          > -->
+
+          <a
+            class="inline-block font-bold text-xl h-fit w-fit"
+            href={getHomePermalink()}
           >
+            <div class="relative w-60 h-24 lg:w-[256px] lg:h-[128px]">
+              <Image
+                src={LogoDark}
+                alt="Graphic logo for impact web studio"
+                class="absolute inset-0 transition-opacity duration-300 dark:opacity-0 opacity-100 !object-contain"
+                width={256}
+                height={128}
+              />
+              <Image
+                src={LogoLight}
+                alt="Graphic logo for impact web studio"
+                class="absolute inset-0 transition-opacity duration-300 dark:opacity-100 opacity-0 !object-contain"
+                width={256}
+                height={128}
+              />
+            </div>
+          </a>
         </div>
         <div class="text-sm text-muted flex gap-1">
           {
