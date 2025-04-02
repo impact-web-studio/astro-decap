@@ -28,5 +28,16 @@
       is:inline
       src="https://unpkg.com/decap-cms@^3.1.2/dist/decap-cms.js"
     ></script>
+    <script slot="head" defer>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', (user) => {
+          if (!user) {
+            window.netlifyIdentity.on('login', () => {
+              document.location.href = '/admin/';
+            });
+          }
+        });
+      }
+    </script>
   </body>
 </html>
