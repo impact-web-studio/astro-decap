@@ -1,13 +1,9 @@
 ---
 import { Icon } from 'astro-icon/components';
 import Image from '~/components/common/Image.astro';
-import { SITE, UI } from 'astrowind:config';
 import { getHomePermalink } from '~/utils/permalinks';
 import LogoDark from '~/assets/images/iws-logo.svg';
 import LogoLight from '~/assets/images/iws-logo-white.svg';
-
-const LogoThemeSelection = UI.theme == 'dark' ? LogoDark : LogoLight;
-console.log(UI.theme);
 
 interface Link {
   text?: string;
