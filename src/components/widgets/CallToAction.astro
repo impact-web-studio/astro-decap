@@ -25,9 +25,14 @@ const {
 } = Astro.props;
 ---
 
-<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
+<WidgetWrapper
+  id={id}
+  isDark={isDark}
+  containerClass={`max-w-6xl mx-auto ${classes?.container ?? ''}`}
+  bg={bg}
+>
   <div
-    class="max-w-3xl mx-auto text-center p-6 rounded-md shadow-xl dark:shadow-none dark:border dark:border-slate-600"
+    class={`max-w-3xl mx-auto text-center p-6 lg:p-10 rounded-md shadow-xl dark:shadow-none dark:border dark:border-slate-600`}
   >
     <Headline
       title={title}
@@ -45,7 +50,10 @@ const {
           {Array.isArray(actions) ? (
             actions.map((action) => (
               <div class="flex w-full sm:w-auto">
-                <Button {...(action || {})} class="w-full sm:mb-0" />
+                <Button
+                  {...(action || {})}
+                  class="w-full sm:mb-0"
+                />
               </div>
             ))
           ) : (
