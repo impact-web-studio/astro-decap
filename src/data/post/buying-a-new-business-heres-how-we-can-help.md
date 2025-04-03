@@ -113,7 +113,7 @@ If you've recently acquired a business or are in the due diligence phase, schedu
 - Identify immediate opportunities and potential challenges
 - Outline a strategic roadmap aligned with your acquisition goals
 
-[Schedule Your Strategy Session](https://www.impactwebstudio.ca/business-acquisition)
+[Schedule Your Strategy Session](https://www.impactwebstudio.ca/contact)
 
 ---
 
