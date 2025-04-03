@@ -1,0 +1,172 @@
+---
+import CallToAction from '~/components/widgets/CallToAction.astro';
+// import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+import Layout from '~/layouts/PageLayout.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+
+const metadata = {
+  title: 'Frequently Asked Questions',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="FAQs"
+    image={{
+      src: 'https://images.unsplash.com/photo-1559136555-9303baea8ebd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Caos Image',
+    }}
+  >
+    <Fragment slot="title">
+      Frequently Asked Questions<br />
+      <!-- <span class="text-accent dark:text-white highlight text-sm tracking-normal">(and answers)</span> -->
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Got Questions? We've got you covered. If your question isn't answered below, please reach out to us directly using
+      our
+      <a
+        href="/contact"
+        class="text-primary hover:cursor-pointer"
+        >contact form.</a
+      >
+    </Fragment>
+  </Hero>
+
+  <!-- FAQs Widget (General) ******************* -->
+
+  <FAQs
+    title="Frequently Asked Questionss"
+    subtitle=`Dive into the following questions of some of our most common inquiries.`
+    tagline="General"
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'Why Impact Web Studio?',
+        description:
+          "With so many web agencies out there, what makes Impact Web Studio different? We're a small team of dedicated professionals who are passionate about helping service-based businesses succeed. We do our best to understand the business needs, and build with the core of the business as the foundation to our work.",
+      },
+      {
+        title: 'What do I need to start?',
+        description:
+          'To get started, we ask that clients prepare an email with a brief description of their business, their goals, and their vision for their website. We will then schedule a call to discuss the project in more detail.',
+      },
+      {
+        title: 'What is your refund and cancellation policy?',
+        description:
+          "We offer a 100% satifaction guaranteed policy. If you're not happy with the design of the website, we will work with you to make it right. If you're still not happy, we will refund your money. We also offer a 30-day money back guarantee. If you're not happy with the website within the first 30 days, we will refund your money.",
+      },
+      {
+        title: 'How exactly does the monthly plan work?',
+        description:
+          "Our monthly plans consist of $0 down and $175 per month with a 12 month minimum contract. The first month's payment goes towards the consultation and design work. We also offer other packages but this is our most popular and is to help businesses that are unable to afford to pay a large upfront cost for a website. We understand that sometimes it takes a bit of time to get traction going.",
+      },
+      {
+        title: 'Do you offer custom packages?',
+        description:
+          'Our most popular package is the monthly subscription - designed to help businesses kickstart their digital renovations and should suffice for the majority of businesses. However, if you have specific requirements, get in touch with our team and we can create a custom package for you.',
+      },
+      {
+        title: 'What exactly do I get once the project is completed?',
+        description:
+          'Upon project completion, you will walk away with a fully functional website, including hosting, website and email domain, and unlimited edits. You will also have access to a CRM system, online payment processor, Google Business Profile setup, and a CMS system. We also offer ongoing support and maintenance to ensure your website is always up-to-date and running smoothly.',
+      },
+    ]}
+  />
+
+  <!-- FAQs Widget (Pricing) ******************* -->
+
+  <FAQs
+    title="Frequently Asked Questions"
+    tagline="Pricing"
+    columns={2}
+    items={[
+      {
+        title: 'Do you offer refunds or a satisfaction guarantee?',
+        description:
+          "We offer a 100% satisfaction guarantee on the design of the website. If, after up to 5 rounds of revisions, we cannot land on a design you're happy with, we will refund 100% of your deposit.",
+      },
+      {
+        title: 'Are there any long-term commitments or contracts?',
+        description:
+          'For monthly plans, there is a minimum 12-month commitment. If you choose to cancel before the contract term ends, you will be charged for the remaining duration of the agreement.',
+      },
+      {
+        title: 'Who owns the website, content, and assets after project completion?',
+        description:
+          'Once the project is completed and all payments are made, you have full ownership of the website, content, and assets, including any and all licenses used in the project.',
+      },
+      {
+        title: 'What happens if I need additional work beyond the initial scope?',
+        description:
+          'Any work beyond the agreed project scope will be billed at our hourly rate. This includes additional features, revisions beyond the 5 included rounds, or post-launch changes outside the scope of the package chosen.',
+      },
+      {
+        title: 'How many design revisions are included in the pricing?',
+        description:
+          'Our pricing includes up to 5 rounds of design revisions. If additional revisions are needed beyond this, they will be billed at our hourly rate.',
+      },
+      {
+        title: 'Can I provide my own design mockups or branding elements?',
+        description:
+          'Yes! If you have existing branding, we will incorporate it into the design to maintain consistency with your brand identity.',
+      },
+      {
+        title: 'Will I get a chance to review the design before development begins?',
+        description:
+          'Yes, you will have the opportunity to review and approve the design before we proceed with development to ensure it aligns with your vision.',
+      },
+      {
+        title: 'What will I need to provide to get started?',
+        description:
+          'To get started, we will need your branding guidelines, content, images, and any specific features or functionality you want to include on the website.',
+      },
+      {
+        title: 'How long does it take to develop a website from start to finish?',
+        description:
+          'The timeline depends on the project scope, but most websites are completed within 4-8 weeks, including design and development.',
+      },
+      {
+        title: 'Can I request additional features or integrations after launch?',
+        description:
+          'We offer ongoing support and can add new features or integrations as needed. Additional work will be quoted separately.',
+      },
+      {
+        title: 'Do you provide training or documentation on how to update and manage the website?',
+        description:
+          'Training sessions and documentation are provided post-launch to help you confidently manage your website. Our team is also available for all business inquiries and support as part of your plan.',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </FAQs>
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get Started',
+        href: '/contact',
+        target: '_blank',
+        icon: 'tabler:rocket',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Ready to Create Your Ideal Site?<br class="block sm:hidden" />
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Build a website that works as hard as you do with<br class="hidden md:inline" /> Impact Web Studio
+    </Fragment>
+  </CallToAction>
+</Layout>
