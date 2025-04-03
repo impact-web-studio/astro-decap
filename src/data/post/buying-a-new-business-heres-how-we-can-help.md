@@ -7,7 +7,7 @@ excerpt: Buying a business is an exciting step, but it comes with its own set of
 category: Business Resources, Business Growth
 tags:
   - Web Design, Web Development, Business Essential Tools, Workflow Automation
-image: /_astro/iws-logo.svg
+image: https://i.imgur.com/uRlzXA9.png
 publishDate: 2025-03-03T15:16:00.000Z
 author: Kenny Nguyen
 ---
