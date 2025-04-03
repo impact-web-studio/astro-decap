@@ -4,7 +4,7 @@ excerpt: Buying a business is an exciting step, but it comes with its own set of
   challenges. IWS helps new business owners establish a strong online presence
   by setting up a modern website, automating workflows, and integrating
   essential tools like Google Business Profile, CRM, and CMS solutions.
-category: Business Resources, Business Growth
+category: Business Resources
 tags:
   - Web Design
   - Web Development
