@@ -1,8 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-// import Image from '~/components/common/Image.astro';
-import { Image as BlogImage } from 'astro:assets';
+import Image from '~/components/common/Image.astro';
 import PostTags from '~/components/blog/Tags.astro';
 import SocialShare from '~/components/common/SocialShare.astro';
 
@@ -10,6 +9,7 @@ import { getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/utils';
 
 import type { Post } from '~/types';
+import type { ImageMetadata } from 'astro';
 
 export interface Props {
   post: Post;
@@ -17,6 +17,14 @@ export interface Props {
 }
 
 const { post, url } = Astro.props;
+
+// Determine how to render the image based on its type
+const isImageMetadata = post.image && typeof post.image === 'object' && 'src' in post.image;
+const isRemoteUrl =
+  post.image &&
+  typeof post.image === 'string' &&
+  (post.image.startsWith('http://') || post.image.startsWith('https://'));
+const imageAlt = post?.excerpt || '';
 ---
 
 <section class="py-8 sm:py-16 lg:py-20 mx-auto">
@@ -87,18 +95,42 @@ const { post, url } = Astro.props;
 
       {
         post.image ? (
-          <BlogImage
-            src={post.image}
-            class="max-w-full lg:max-w-[900px] mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"
-            widths={[400, 900]}
-            sizes="(max-width: 900px) 400px, 900px"
-            alt={post?.excerpt || ''}
-            width={900}
-            height={506}
-            loading="eager"
-            decoding="async"
-            inferSize={true}
-          />
+          isImageMetadata ? (
+            // For ImageMetadata objects (imported images)
+            <Image
+              src={post.image as ImageMetadata}
+              class="max-w-full lg:max-w-[900px] mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"
+              widths={[400, 900]}
+              sizes="(max-width: 900px) 400px, 900px"
+              alt={imageAlt}
+              loading="eager"
+              decoding="async"
+            />
+          ) : isRemoteUrl ? (
+            // For remote URLs
+            <Image
+              src={post.image as string}
+              class="max-w-full lg:max-w-[900px] mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"
+              widths={[400, 900]}
+              sizes="(max-width: 900px) 400px, 900px"
+              alt={imageAlt}
+              width={900}
+              height={506}
+              loading="eager"
+              decoding="async"
+            />
+          ) : (
+            // For SVGs and other special cases
+            <img
+              src={post.image as string}
+              class="max-w-full lg:max-w-[900px] mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"
+              alt={imageAlt}
+              width="900"
+              height="506"
+              loading="eager"
+              decoding="async"
+            />
+          )
         ) : (
           <div class="max-w-3xl mx-auto px-4 sm:px-6">
             <div class="border-t dark:border-slate-700" />
