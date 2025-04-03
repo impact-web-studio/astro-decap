@@ -22,7 +22,7 @@ export interface ImageProps extends Omit<HTMLAttributes<'img'>, 'src'> {
   widths?: number[] | null;
   aspectRatio?: string | number | null;
   objectPosition?: string;
-
+  inferSize?: boolean;
   format?: string;
 }
 
