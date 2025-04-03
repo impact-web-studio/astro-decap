@@ -17,10 +17,10 @@ export const headerData = {
           text: 'FAQs',
           href: getPermalink('/faqs'),
         },
-        {
-          text: 'Reviews',
-          href: getPermalink('/reviews'),
-        },
+        // {
+        //   text: 'Reviews',
+        //   href: getPermalink('/reviews'),
+        // },
       ],
     },
     {
@@ -116,6 +116,6 @@ export const footerData = {
   //   { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
   // ],
   footNote: `
-    Designed & Developed by <a class="text-blue-600 underline dark:text-muted" href="https://impactwebstudio.ca/"> Impact Web Studio</a> · All rights reserved.
+    Designed & Developed by <a class="text-accent underline dark:text-default" href="https://impactwebstudio.ca/"> Impact Web Studio</a> · All rights reserved.
   `,
 };
