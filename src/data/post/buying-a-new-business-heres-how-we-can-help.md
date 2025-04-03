@@ -10,7 +10,7 @@ tags:
   - Web Development
   - " Business Essential Tools"
   - Workflow Automation
-image: src/assets/images/blog/iws-logo.jpg
+image: https://i.imgur.com/yahb23I.jpeg
 publishDate: 2025-03-03T15:16:00.000Z
 author: Kenny Nguyen
 ---
