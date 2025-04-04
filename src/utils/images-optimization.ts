@@ -32,7 +32,7 @@ export type ImagesOptimizer = (
   width?: number,
   height?: number,
   format?: string
-) => Promise<Array<{ src: string; width: number }>>;
+) => Promise<Array<{ src: string; width: number; height?: number }>>;
 
 /* ******* */
 const config = {
@@ -225,12 +225,18 @@ export const astroAssetsOptimizer: ImagesOptimizer = async (
 
   return Promise.all(
     breakpoints.map(async (w: number) => {
-      const result = await getImage({ src: image, width: w, inferSize: true, ...(format ? { format: format } : {}) });
+      const result = await getImage({
+        src: image,
+        width: w,
+        height: _height,
+        inferSize: true,
+        ...(format ? { format: format } : {}),
+      });
 
       return {
         src: result?.src,
         width: result?.attributes?.width ?? w,
-        height: result?.attributes?.height,
+        height: result?.attributes?.height ?? _height,
       };
     })
   );
@@ -269,6 +275,55 @@ export const unpicOptimizer: ImagesOptimizer = async (image, breakpoints, width,
       };
     })
   );
+};
+
+/* * DECAP CMS IMAGES * */
+export const decapAssetOptimizer: ImagesOptimizer = async (image, breakpoints, width, height, format = undefined) => {
+  if (!image || typeof image !== 'string') {
+    return [];
+  }
+
+  // Check if it's a Decap CMS image
+  if (!image.includes('/src/assets/images/blog/')) {
+    return [];
+  }
+
+  try {
+    // Extract the relative path from the full path
+    const relativePath = image.replace(/^.*\/src\/assets\/images\/blog\//, '');
+
+    // Dynamically import the image
+    const imageModule = await import(`../assets/images/blog/${relativePath}`);
+
+    // Use Astro's image processing for the imported image
+    return Promise.all(
+      breakpoints.map(async (w: number) => {
+        const result = await getImage({
+          src: imageModule.default,
+          width: w,
+          height: height,
+          inferSize: true,
+          ...(format ? { format: format } : {}),
+        });
+
+        return {
+          src: result?.src,
+          width: result?.attributes?.width ?? w,
+          height: result?.attributes?.height ?? height,
+        };
+      })
+    );
+  } catch (error) {
+    console.error(`Error processing Decap CMS image: ${image}`, error);
+    // Return the original image if there's an error
+    return [
+      {
+        src: image,
+        width: width || 0,
+        height: height,
+      },
+    ];
+  }
 };
 
 /* ** */
