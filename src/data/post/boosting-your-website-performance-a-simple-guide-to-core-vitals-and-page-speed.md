@@ -9,7 +9,7 @@ tags:
   - Best Practices
   - SEO
   - Business
-image: https://h2o-digital.com/wp-content/uploads/2022/02/What-Are-Google-Core-Web-Vitals-And-Why-They-Matter-Web-Design-Nottingham-h2o-digital.jpg
+image: /src/assets/images/blog/pagespeed-metrics.png
 publishDate: 2025-01-11T10:45:00.000Z
 author: Kenny Nguyen
 ---

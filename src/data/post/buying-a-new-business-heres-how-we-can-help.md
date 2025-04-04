@@ -10,7 +10,7 @@ tags:
   - Business Acquisition
   - Technology Tools
   - Digital Strategy
-image: https://media.licdn.com/dms/image/v2/C4D12AQFbazTBio10eg/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1590406208853?e=1749081600&v=beta&t=EvDvleBQRjbRGPYbY5bQQ5iia5L9nT3eiSW58rRIp-8
+image: /src/assets/images/blog/business-acquisition.jpg
 publishDate: 2025-03-03T15:16:00.000Z
 author: Kenny Nguyen
 ---
