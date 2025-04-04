@@ -9,7 +9,7 @@ tags:
   - Data Management
   - Service Businesses
   - Airtable
-image: /src/assets/images/blog/airtable-homepage-carousel.webp
+image: /src/assets/images/blog/hero-image.png
 publishDate: 2024-12-21T11:44:00.000Z
 author: Kenny Nguyen
 ---
