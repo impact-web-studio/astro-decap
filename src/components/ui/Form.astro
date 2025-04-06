@@ -5,10 +5,7 @@ import Button from '~/components/ui/Button.astro';
 const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props;
 ---
 
-<form
-  data-netlify="true"
-  name="Contact Form"
->
+<form data-netlify="true" name="Contact Form">
   {
     inputs &&
       inputs.map(
@@ -16,10 +13,7 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
           name && (
             <div class="mb-6">
               {label && (
-                <label
-                  for={name}
-                  class="block text-sm font-medium"
-                >
+                <label for={name} class="block text-sm font-medium">
                   {label}
                 </label>
               )}
@@ -39,10 +33,7 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
   {
     textarea && (
       <div>
-        <label
-          for="textarea"
-          class="block text-sm font-medium"
-        >
+        <label for="textarea" class="block text-sm font-medium">
           {textarea.label}
         </label>
         <textarea
@@ -68,10 +59,7 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
           />
         </div>
         <div class="ml-3">
-          <label
-            for="disclaimer"
-            class="cursor-pointer select-none text-sm text-gray-600 dark:text-gray-400"
-          >
+          <label for="disclaimer" class="cursor-pointer select-none text-sm text-gray-600 dark:text-gray-400">
             {disclaimer.label}
           </label>
         </div>
@@ -82,10 +70,7 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
   {
     button && (
       <div class="mt-10 grid">
-        <Button
-          variant="primary"
-          type="submit"
-        >
+        <Button variant="primary" type="submit">
           {button}
         </Button>
       </div>

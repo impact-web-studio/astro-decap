@@ -14,6 +14,7 @@ image: /src/assets/images/blog/business-acquisition.jpg
 publishDate: 2025-03-03T15:16:00.000Z
 author: Kenny Nguyen
 ---
+
 ## Digital Strategy as a Business Asset
 
 For service-based business acquirers, your online presence is far more than a website—it's a critical business asset that should:
@@ -55,15 +56,19 @@ Efficiency drives profitability in service businesses. Our integrations focus on
 ## Alignment with Your Business Acquisition Goals
 
 ### For Growth-Focused Acquirers
+
 If you've acquired a business with expansion potential, we focus on scalable systems that can handle increased volume without proportional increases in overhead.
 
 ### For Turnaround Specialists
+
 When acquiring an underperforming business, we identify digital inefficiencies and implement targeted solutions that quickly impact bottom-line performance.
 
 ### For Portfolio Builders
+
 If this acquisition is part of a larger business portfolio, we design consistent digital frameworks that facilitate cross-business efficiencies.
 
 ### For Industry Consolidators
+
 When consolidating multiple businesses in the same sector, we develop digital strategies that preserve individual brand equity while creating operational synergies.
 
 ## Our Approach: Strategic Partnership
@@ -81,11 +86,13 @@ We work exclusively with business acquirers who value strategic partnership over
 We understand the financial dynamics of business acquisition and structure our services accordingly:
 
 ### Strategic Implementation Package
+
 - Complete strategic implementation with clearly defined scope and timeline
 - Fixed investment with milestone-based payments aligned with your cash flow
 - Perfect for acquirers who prefer predictable costs and clear project boundaries
 
 ### Performance Partnership
+
 - Lower initial investment with ongoing optimization and support
 - Performance-based fee structure tied to agreed-upon business outcomes
 - Ideal for growth-focused acquirers who value shared risk and reward
@@ -117,4 +124,4 @@ If you've recently acquired a business or are in the due diligence phase, schedu
 
 ---
 
-*"The digital strategy work completed after our acquisition increased our client retention by 92% during the ownership transition and generated a 43% increase in high-value service bookings within the first quarter." – Sarah Reynolds, Service Business Acquirer*
+_"The digital strategy work completed after our acquisition increased our client retention by 92% during the ownership transition and generated a 43% increase in high-value service bookings within the first quarter." – Sarah Reynolds, Service Business Acquirer_

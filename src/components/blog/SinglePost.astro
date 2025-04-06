@@ -37,24 +37,13 @@ const imageAlt = post?.excerpt || '';
     >
       <div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-0 mb-2 px-4 sm:px-6 sm:items-center">
         <p>
-          <Icon
-            name="tabler:clock"
-            class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400"
-          />
-          <time
-            datetime={String(post.publishDate)}
-            class="inline-block"
-            >{getFormattedDate(post.publishDate)}</time
-          >
+          <Icon name="tabler:clock" class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400" />
+          <time datetime={String(post.publishDate)} class="inline-block">{getFormattedDate(post.publishDate)}</time>
           {
             post.author && (
               <>
                 {' '}
-                ·{' '}
-                <Icon
-                  name="tabler:user"
-                  class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400"
-                />
+                · <Icon name="tabler:user" class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400" />
                 <span class="inline-block">{post.author}</span>
               </>
             )
@@ -64,10 +53,7 @@ const imageAlt = post?.excerpt || '';
               <>
                 {' '}
                 ·{' '}
-                <a
-                  class="hover:underline inline-block"
-                  href={getPermalink(post.category.slug, 'category')}
-                >
+                <a class="hover:underline inline-block" href={getPermalink(post.category.slug, 'category')}>
                   {post.category.title}
                 </a>
               </>
@@ -145,15 +131,8 @@ const imageAlt = post?.excerpt || '';
       <slot />
     </div>
     <div class="mx-auto px-6 sm:px-6 max-w-3xl mt-8 flex justify-between flex-col sm:flex-row">
-      <PostTags
-        tags={post.tags}
-        class="mr-5 rtl:mr-0 rtl:ml-5"
-      />
-      <SocialShare
-        url={url}
-        text={post.title}
-        class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600"
-      />
+      <PostTags tags={post.tags} class="mr-5 rtl:mr-0 rtl:ml-5" />
+      <SocialShare url={url} text={post.title} class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600" />
     </div>
   </article>
 </section>
