@@ -289,11 +289,8 @@ export const decapAssetOptimizer: ImagesOptimizer = async (image, breakpoints, w
   }
 
   try {
-    // Extract the relative path from the full path
-    const relativePath = image.replace(/^.*\/src\/assets\/images\/blog\//, '');
-
     // Dynamically import the image
-    const imageModule = await import(`../assets/images/blog/${relativePath}`);
+    const imageModule = await import(/* @vite-ignore */ `${image}?url`);
 
     // Use Astro's image processing for the imported image
     return Promise.all(

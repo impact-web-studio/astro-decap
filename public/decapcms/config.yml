@@ -3,7 +3,7 @@ backend:
   branch: main
 
 media_folder: 'src/assets/images/blog'
-# public_folder: '/_astro'
+public_folder: '/assets/images/blog'
 
 collections:
   - name: 'post'
