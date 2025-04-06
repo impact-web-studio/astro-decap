@@ -62,20 +62,6 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
             </div>
           </a>
         </div>
-        <div class="text-sm text-muted flex gap-1">
-          {
-            secondaryLinks.map(({ text, href }, index) => (
-              <>
-                {index !== 0 ? ' · ' : ''}
-                <a
-                  class="text-muted hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out"
-                  href={href}
-                  set:html={text}
-                />
-              </>
-            ))
-          }
-        </div>
       </div>
       {
         links.map(({ title, links }) => (
@@ -127,8 +113,25 @@ const { socialLinks = [], secondaryLinks = [], links = [], footNote = '', theme 
         )
       }
 
-      <div class="text-sm mr-4 dark:text-muted">
-        <Fragment set:html={footNote} />
+      <div class="text-sm mr-4 w-full flex justify-between flex-wrap-reverse gap-y-2 dark:text-muted">
+        <div class="footnote">
+          <Fragment set:html={footNote} />
+        </div>
+
+        <div class="text-sm text-muted flex gap-1">
+          {
+            secondaryLinks.map(({ text, href }, index) => (
+              <>
+                {index !== 0 ? ' · ' : ''}
+                <a
+                  class="text-muted hover:text-gray-700 dark:text-gray-400 hover:underline transition duration-150 ease-in-out"
+                  href={href}
+                  set:html={text}
+                />
+              </>
+            ))
+          }
+        </div>
       </div>
     </div>
   </div>
