@@ -1,7 +1,8 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-import Image from '~/components/common/Image.astro';
+import { Image } from 'astro:assets';
+import { getBlogImage } from '~/utils/decap-images';
 
 import PostTags from '~/components/blog/Tags.astro';
 import SocialShare from '~/components/common/SocialShare.astro';
@@ -26,6 +27,8 @@ const isRemoteUrl =
   typeof post.image === 'string' &&
   (post.image.startsWith('http://') || post.image.startsWith('https://'));
 const imageAlt = post?.excerpt || '';
+
+const imageSrc = await getBlogImage(post.image);
 ---
 
 <section class="py-8 sm:py-16 lg:py-20 mx-auto">
@@ -37,13 +40,24 @@ const imageAlt = post?.excerpt || '';
     >
       <div class="flex justify-between flex-col sm:flex-row max-w-3xl mx-auto mt-0 mb-2 px-4 sm:px-6 sm:items-center">
         <p>
-          <Icon name="tabler:clock" class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400" />
-          <time datetime={String(post.publishDate)} class="inline-block">{getFormattedDate(post.publishDate)}</time>
+          <Icon
+            name="tabler:clock"
+            class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400"
+          />
+          <time
+            datetime={String(post.publishDate)}
+            class="inline-block"
+            >{getFormattedDate(post.publishDate)}</time
+          >
           {
             post.author && (
               <>
                 {' '}
-                · <Icon name="tabler:user" class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400" />
+                ·{' '}
+                <Icon
+                  name="tabler:user"
+                  class="w-4 h-4 inline-block -mt-0.5 dark:text-gray-400"
+                />
                 <span class="inline-block">{post.author}</span>
               </>
             )
@@ -53,7 +67,10 @@ const imageAlt = post?.excerpt || '';
               <>
                 {' '}
                 ·{' '}
-                <a class="hover:underline inline-block" href={getPermalink(post.category.slug, 'category')}>
+                <a
+                  class="hover:underline inline-block"
+                  href={getPermalink(post.category.slug, 'category')}
+                >
                   {post.category.title}
                 </a>
               </>
@@ -82,10 +99,10 @@ const imageAlt = post?.excerpt || '';
 
       {
         post.image ? (
-          isImageMetadata ? (
+          typeof imageSrc === 'object' ? (
             // For ImageMetadata objects (imported images)
             <Image
-              src={post.image as ImageMetadata}
+              src={imageSrc as ImageMetadata}
               class="max-w-full lg:max-w-[900px] mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"
               widths={[400, 900]}
               sizes="(max-width: 900px) 400px, 900px"
@@ -96,7 +113,7 @@ const imageAlt = post?.excerpt || '';
           ) : isRemoteUrl ? (
             // For remote URLs
             <Image
-              src={post.image as string}
+              src={imageSrc as string}
               class="max-w-full lg:max-w-[900px] mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"
               widths={[400, 900]}
               sizes="(max-width: 900px) 400px, 900px"
@@ -109,7 +126,7 @@ const imageAlt = post?.excerpt || '';
           ) : (
             // For SVGs and other special cases
             <img
-              src={post.image as string}
+              src={imageSrc as string}
               class="max-w-full lg:max-w-[900px] mx-auto mb-6 sm:rounded-md bg-gray-400 dark:bg-slate-700"
               alt={imageAlt}
               width="900"
@@ -131,8 +148,15 @@ const imageAlt = post?.excerpt || '';
       <slot />
     </div>
     <div class="mx-auto px-6 sm:px-6 max-w-3xl mt-8 flex justify-between flex-col sm:flex-row">
-      <PostTags tags={post.tags} class="mr-5 rtl:mr-0 rtl:ml-5" />
-      <SocialShare url={url} text={post.title} class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600" />
+      <PostTags
+        tags={post.tags}
+        class="mr-5 rtl:mr-0 rtl:ml-5"
+      />
+      <SocialShare
+        url={url}
+        text={post.title}
+        class="mt-5 sm:mt-1 align-middle text-gray-500 dark:text-slate-600"
+      />
     </div>
   </article>
 </section>

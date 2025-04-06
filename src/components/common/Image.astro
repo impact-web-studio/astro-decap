@@ -3,7 +3,6 @@ import type { HTMLAttributes } from 'astro/types';
 import { findImage } from '~/utils/images';
 import {
   getImagesOptimized,
-  decapAssetOptimizer,
   astroAssetsOptimizer,
   unpicOptimizer,
   isUnpicCompatible,
@@ -48,8 +47,8 @@ if (
   isUnpicCompatible(_image)
 ) {
   image = await getImagesOptimized(_image, props, unpicOptimizer);
-} else if (typeof _image === 'string' && _image.startsWith('/src/assets/images/blog/')) {
-  image = await getImagesOptimized(_image, props, decapAssetOptimizer);
+  // } else if (typeof _image === 'string' && _image.startsWith('/src/assets/images/blog/')) {
+  //   image = await getImagesOptimized(_image, props, decapAssetOptimizer);
 } else if (_image) {
   image = await getImagesOptimized(_image, props, astroAssetsOptimizer);
   // console.log('OPTIMIZED IMG2', image);
@@ -60,6 +59,11 @@ if (
   !image ? (
     <Fragment />
   ) : (
-    <img src={image.src} crossorigin="anonymous" referrerpolicy="no-referrer" {...image.attributes} />
+    <img
+      src={image.src}
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      {...image.attributes}
+    />
   )
 }
