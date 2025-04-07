@@ -2,7 +2,8 @@
 import { APP_BLOG } from 'astrowind:config';
 import type { Post } from '~/types';
 
-import Image from '~/components/common/Image.astro';
+import { Image } from 'astro:assets';
+import { getBlogImage } from '~/utils/decap-images';
 
 import { findImage } from '~/utils/images';
 import { getPermalink } from '~/utils/permalinks';
@@ -15,6 +16,7 @@ const { post } = Astro.props;
 const image = await findImage(post.image);
 
 const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : '';
+const imageSrc = await getBlogImage(post.image);
 ---
 
 <article
@@ -26,28 +28,24 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
         (link ? (
           <a href={link}>
             <Image
-              src={image}
-              class="w-full md:h-full rounded shadow-lg bg-gray-400 dark:bg-slate-700"
+              src={imageSrc}
+              class="w-full object-cover aspect-video md:h-full rounded shadow-lg bg-gray-400 dark:bg-slate-700"
               widths={[400, 900]}
               width={400}
               sizes="(max-width: 900px) 400px, 900px"
               alt={post.title}
-              aspectRatio="16:9"
-              layout="cover"
               loading="lazy"
               decoding="async"
             />
           </a>
         ) : (
           <Image
-            src={image}
-            class="w-full md:h-full rounded shadow-lg bg-gray-400 dark:bg-slate-700"
+            src={imageSrc}
+            class="w-full object-cover aspect-video md:h-full rounded shadow-lg bg-gray-400 dark:bg-slate-700"
             widths={[400, 900]}
             width={400}
             sizes="(max-width: 900px) 400px, 900px"
             alt={post.title}
-            aspectRatio="16:9"
-            layout="cover"
             loading="lazy"
             decoding="async"
           />
@@ -58,7 +56,10 @@ const link = APP_BLOG?.post?.isEnabled ? getPermalink(post.permalink, 'post') : 
   <h3 class="text-xl sm:text-2xl font-bold leading-tight mb-2 font-heading dark:text-slate-300">
     {
       link ? (
-        <a class="line-clamp-2 hover:text-primary dark:hover:text-blue-700 transition ease-in duration-200" href={link}>
+        <a
+          class="line-clamp-2 hover:text-primary dark:hover:text-blue-700 transition ease-in duration-200"
+          href={link}
+        >
           {post.title}
         </a>
       ) : (
