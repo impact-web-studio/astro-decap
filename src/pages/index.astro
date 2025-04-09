@@ -11,6 +11,7 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Portfolio from '~/components/widgets/Portfolio.astro';
 
 const metadata = {
   title: 'Impact Web Studio Inc. | Built with Astrowind and Tailwind CSS',
@@ -258,139 +259,162 @@ const metadata = {
     items={[
       {
         title: 'Sports & Fitness',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
+        description:
+          'Personal trainers, gyms, yoga studios, and sports facilities. Automate class registrations, manage memberships, streamline payment processing, and let clients book sessions 24/7.',
         icon: 'flat-color-icons:sports-mode',
       },
       {
         title: 'Beauty & Wellness',
         description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
+          'Salons, spas, massage therapists, and wellness centers. Reduce no-shows with automated reminders, showcase your services with stunning galleries, and let clients book and pay online anytime.',
         icon: 'noto:barber-pole',
       },
       {
-        title: 'Events & Entertainment',
+        title: 'Health & Medical',
         description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:clapperboard',
+          'Doctors, dentists, chiropractors, and medical specialists. We offer HIPAA-compliant websites that build trust. Simplify patient intake forms, manage appointments securely, and provide telehealth options while maintaining patient confidentiality.',
+        icon: 'flat-color-icons:like',
       },
       {
         title: 'Coaches & Consultants',
         description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
+          'Business coaches, life coaches, and consultants. Automate discovery calls, subscription services, and course enrollments while establishing your services with gallery images and testimonials.',
         icon: 'flat-color-icons:voice-presentation',
       },
       {
         title: 'Home & Trade Services',
         description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
+          'Contractors, plumbers, electricians, and landscapers. Capture customer information through smart forms, automate estimate requests, and showcase your portfolio of completed projects with before-and-after galleries.',
         icon: 'noto:house-with-garden',
       },
       {
         title: 'Pet Services',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
+        description:
+          'Veterinarians, groomers, pet sitters, and boarding facilities. Enable digital intake forms, vaccination records, and automated appointment reminders to keep pets healthy and owners happy.',
         icon: 'noto:paw-prints',
       },
       {
-        title: 'Education',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
+        title: 'Education & Childcare',
+        description:
+          'Tutors, daycares, preschools, and educational centers. Simplify enrollment processes, showcase curriculum details, and implement secure parent portals for continuous updates and communication.',
         icon: 'noto:books',
       },
       {
         title: 'Automotive & Repair Services',
         description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
+          'Auto shops, mechanics, and specialty repair services. Eliminate phone tag with customers. Enable online service scheduling, automated maintenance reminders, and digital estimate approvals.',
         icon: 'noto:automobile',
       },
       {
-        title: 'Real Estate',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:department',
+        title: 'Professional & Creative Services',
+        description:
+          'Accountants, lawyers, photographers, graphic designers, and creative professionals need to showcase their expertise. Highlight your portfolio, automate client onboarding processes, and implement secure document sharing systems.',
+        icon: 'noto:handshake-medium-light-skin-tone-light-skin-tone',
       },
     ]}
   >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
+    <!-- HighlightedPosts Widget ******* -->
+
+    <BlogLatestPosts
+      title="Latest News and Articles"
+      information={`Explore a range of tutorials, guides, and insights on our blog. Whether you're looking for practical tips or in-depth tutorials, our articles aim to guide you through the intricacies of building better websites and the important role it plays in modernizing your business.`}
+    />
+
+    <!-- Portfolio Widget -->
+    <!-- <Portfolio
+    title="Some of the Work We've Done Over the Years"
+    subtitle="From small businesses to established practices, we've built websites for service providers operating within Canada and the United States."
+    tagline="Portfolio"
+    projects={[
+      {
+        imagePath: '/src/assets/images/blkowned-ca.png',
+        title: 'blk owned',
+        description:
+          'BLK Owned is a non-profit startup in the Hamilton Area that empowers and elevates black owned businesses across the GTA.',
+        url: 'https://blkowned.ca/',
+      },
+      {
+        imagePath: '/src/assets/images/hendersonhomeimprovements-ca.png',
+        title: 'henderson home improvements',
+        description: 'Henderson Home Improvements is a construction company servicing the GTA.',
+        url: 'https://hendersonhomeimprovements.ca/',
+      },
+    ]}
+    column={2}
+  /> -->
+
+    <!-- FAQs Widget ******************* -->
+
+    <FAQs
+      title="Frequently Asked Questions"
+      subtitle=`Dive into the following questions of some of our most common inquiries. If your question isn't answered below, please reach out directly to us.`
+      tagline="FAQs"
+      classes={{ container: 'max-w-6xl' }}
+      items={[
+        {
+          title: 'Why Impact Web Studio?',
+          description:
+            "With so many web agencies out there, what makes Impact Web Studio different? We're a small team of dedicated professionals who are passionate about helping service-based businesses succeed. We do our best to understand the business needs, and build with the core of the business as the foundation to our work.",
+        },
+        {
+          title: 'What do I need to start?',
+          description:
+            'To get started, we ask that clients prepare an email with a brief description of their business, their goals, and their vision for their website. We will then schedule a call to discuss the project in more detail.',
+        },
+        {
+          title: 'What is your refund and cancellation policy?',
+          description:
+            "We offer a 100% satifaction guaranteed policy. If you're not happy with the design of the website, we will work with you to make it right. If you're still not happy, we will refund your money. We also offer a 30-day money back guarantee. If you're not happy with the website within the first 30 days, we will refund your money.",
+        },
+        {
+          title: 'How exactly does the monthly plan work?',
+          description:
+            "Our monthly plans consist of $0 down and $150 per month with a 12 month minimum contract. The first month's payment goes towards the consultation and design work. We also offer other packages but this is our most popular and is to help businesses that are unable to afford to pay a large upfront cost for a website. We understand that sometimes it takes a bit of time to get traction going.",
+        },
+        {
+          title: 'Do you offer custom packages?',
+          description:
+            'Our most popular package is the monthly subscription - designed to help businesses kickstart their digital renovations and should suffice for the majority of businesses. However, if you have specific requirements, get in touch with our team and we can create a custom package for you.',
+        },
+        {
+          title: 'What exactly do I get once the project is completed?',
+          description:
+            'Upon project completion, you will walk away with a fully functional website, including hosting, website and email domain, and unlimited edits. You will also have access to a CRM system, online payment processor, Google Business Profile setup, and a CMS system. We also offer ongoing support and maintenance to ensure your website is always up-to-date and running smoothly.',
+        },
+      ]}
+    />
+
+    <!-- Stats Widget ****************** -->
+
+    <Stats
+      stats={[
+        { title: 'PageSpeed Score', amount: '90+' },
+        { title: 'Satification Guaranteed', amount: '100%' },
+        { title: 'Load Times', amount: '<1s' },
+        { title: 'Uptime', amount: '99.9%' },
+      ]}
+    />
+
+    <!-- CallToAction Widget *********** -->
+
+    <CallToAction
+      actions={[
+        {
+          variant: 'primary',
+          text: 'Get Started',
+          href: '/contact',
+          target: '_blank',
+          icon: 'tabler:rocket',
+        },
+      ]}
+    >
+      <Fragment slot="title">
+        Ready to Create Your Ideal Site?<br class="block sm:hidden" />
+      </Fragment>
+
+      <Fragment slot="subtitle">
+        Build a website that works as hard as you do with<br class="hidden md:inline" /> Impact Web Studio
+      </Fragment>
+    </CallToAction>
   </Features2>
-
-  <!-- HighlightedPosts Widget ******* -->
-
-  <BlogLatestPosts
-    title="Latest News and Articles"
-    information={`Explore a range of tutorials, guides, and insights on our blog. Whether you're looking for practical tips or in-depth tutorials, our articles aim to guide you through the intricacies of building better websites and the important role it plays in modernizing your business.`}
-  />
-
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle=`Dive into the following questions of some of our most common inquiries. If your question isn't answered below, please reach out directly to us.`
-    tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
-    items={[
-      {
-        title: 'Why Impact Web Studio?',
-        description:
-          "With so many web agencies out there, what makes Impact Web Studio different? We're a small team of dedicated professionals who are passionate about helping service-based businesses succeed. We do our best to understand the business needs, and build with the core of the business as the foundation to our work.",
-      },
-      {
-        title: 'What do I need to start?',
-        description:
-          'To get started, we ask that clients prepare an email with a brief description of their business, their goals, and their vision for their website. We will then schedule a call to discuss the project in more detail.',
-      },
-      {
-        title: 'What is your refund and cancellation policy?',
-        description:
-          "We offer a 100% satifaction guaranteed policy. If you're not happy with the design of the website, we will work with you to make it right. If you're still not happy, we will refund your money. We also offer a 30-day money back guarantee. If you're not happy with the website within the first 30 days, we will refund your money.",
-      },
-      {
-        title: 'How exactly does the monthly plan work?',
-        description:
-          "Our monthly plans consist of $0 down and $150 per month with a 12 month minimum contract. The first month's payment goes towards the consultation and design work. We also offer other packages but this is our most popular and is to help businesses that are unable to afford to pay a large upfront cost for a website. We understand that sometimes it takes a bit of time to get traction going.",
-      },
-      {
-        title: 'Do you offer custom packages?',
-        description:
-          'Our most popular package is the monthly subscription - designed to help businesses kickstart their digital renovations and should suffice for the majority of businesses. However, if you have specific requirements, get in touch with our team and we can create a custom package for you.',
-      },
-      {
-        title: 'What exactly do I get once the project is completed?',
-        description:
-          'Upon project completion, you will walk away with a fully functional website, including hosting, website and email domain, and unlimited edits. You will also have access to a CRM system, online payment processor, Google Business Profile setup, and a CMS system. We also offer ongoing support and maintenance to ensure your website is always up-to-date and running smoothly.',
-      },
-    ]}
-  />
-
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    stats={[
-      { title: 'PageSpeed Score', amount: '90+' },
-      { title: 'Satification Guaranteed', amount: '100%' },
-      { title: 'Load Times', amount: '<1s' },
-      { title: 'Uptime', amount: '99.9%' },
-    ]}
-  />
-
-  <!-- CallToAction Widget *********** -->
-
-  <CallToAction
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Get Started',
-        href: '/contact',
-        target: '_blank',
-        icon: 'tabler:rocket',
-      },
-    ]}
-  >
-    <Fragment slot="title">
-      Ready to Create Your Ideal Site?<br class="block sm:hidden" />
-    </Fragment>
-
-    <Fragment slot="subtitle">
-      Build a website that works as hard as you do with<br class="hidden md:inline" /> Impact Web Studio
-    </Fragment>
-  </CallToAction>
 </Layout>
