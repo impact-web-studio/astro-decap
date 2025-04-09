@@ -82,7 +82,7 @@ export const footerData = {
       links: [
         { text: 'About Us', href: '#' },
         { text: 'FAQs', href: '#' },
-        { text: 'Reviews', href: '#' },
+        // { text: 'Reviews', href: '#' },
       ],
     },
     // {
