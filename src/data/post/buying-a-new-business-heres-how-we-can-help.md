@@ -4,7 +4,7 @@ excerpt: When acquiring an established business, the digital assets you inherit
   can be either valuable springboards or outdated liabilities. The right digital
   foundation doesn't just complement your business—it accelerates your growth
   trajectory and enhances your competitive advantage.
-category: Business Resources
+category: Business Resource
 tags:
   - Service Businesses
   - Business Acquisition
