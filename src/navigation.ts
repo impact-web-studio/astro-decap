@@ -71,7 +71,7 @@ export const footerData = {
       links: [
         { text: 'Home', href: '#' },
         { text: 'About', href: '#' },
-        { text: 'Services', href: '#' },
+        // { text: 'Services', href: '#' },
         { text: 'Pricing', href: '#' },
         { text: 'Articles', href: '#' },
         { text: 'Contact', href: '#' },
@@ -85,22 +85,22 @@ export const footerData = {
         { text: 'Reviews', href: '#' },
       ],
     },
-    {
-      title: 'Services',
-      links: [
-        { text: 'Web Design', href: '#' },
-        { text: 'Web Development', href: '#' },
-        { text: 'Shopify Integration', href: '#' },
-        { text: 'ERP Solutions', href: '#' },
-        { text: 'Custom Software Integration', href: '#' },
-      ],
-    },
+    // {
+    //   title: 'Services',
+    //   links: [
+    //     { text: 'Web Design', href: '#' },
+    //     { text: 'Web Development', href: '#' },
+    //     { text: 'Shopify Integration', href: '#' },
+    //     { text: 'ERP Solutions', href: '#' },
+    //     { text: 'Custom Software Integration', href: '#' },
+    //   ],
+    // },
     {
       title: 'Company',
       links: [
         { text: 'Whatsapp: +1 (647) 767 - 8840', href: '#' },
         { text: 'Email: info@impactwebstudio.ca', href: '#' },
-        { text: 'Careers', href: '#' },
+        // { text: 'Careers', href: '#' },
       ],
     },
   ],

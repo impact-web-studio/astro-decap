@@ -82,7 +82,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
       aria-label="Main navigation"
     >
       <ul
-        class="flex flex-col py-10 lg:flex-row lg:self-center w-full lg:w-auto text-xl lg:text-[0.9375rem] tracking-[0.01rem] font-medium lg:justify-center"
+        class="flex flex-col max-lg:py-10 lg:flex-row lg:self-center w-full lg:w-auto text-xl lg:text-[0.9375rem] tracking-[0.01rem] font-medium lg:justify-center"
       >
         {
           links.map(({ text, href, links }) => (
@@ -94,7 +94,10 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                     class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap"
                   >
                     {text}{' '}
-                    <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden lg:inline" />
+                    <Icon
+                      name="tabler:chevron-down"
+                      class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden lg:inline"
+                    />
                   </button>
                   <ul class="dropdown-menu lg:backdrop-blur-md dark:lg:bg-dark rounded lg:absolute pl-4 lg:pl-0 lg:hidden font-medium lg:bg-white/90 lg:min-w-[200px] drop-shadow-xl">
                     {links.map(({ text: text2, href: href2 }) => (
@@ -144,7 +147,10 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                 aria-label="RSS Feed"
                 href={getAsset('/rss.xml')}
               >
-                <Icon name="tabler:rss" class="w-5 h-5" />
+                <Icon
+                  name="tabler:rss"
+                  class="w-5 h-5"
+                />
               </a>
             )
           }
@@ -153,7 +159,10 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
           actions?.length ? (
             <span class="ml-4 rtl:ml-0 rtl:mr-4">
               {actions.map((btnProps) => (
-                <Button {...btnProps} class="ml-2 py-2.5 px-5.5 lg:px-6 font-semibold shadow-none text-sm w-auto" />
+                <Button
+                  {...btnProps}
+                  class="ml-2 py-2.5 px-5.5 lg:px-6 font-semibold shadow-none text-sm w-auto"
+                />
               ))}
             </span>
           ) : (
