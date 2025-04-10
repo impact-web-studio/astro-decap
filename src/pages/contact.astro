@@ -33,7 +33,10 @@ const CompanyInfo = [
 <Layout metadata={metadata}>
   <!-- HeroText Widget ******************* -->
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
+  <HeroText
+    tagline="Contact"
+    title="Let's Connect!"
+  />
 
   <!-- Contact Container -->
   <WidgetWrapper containerClass={`max-w-7xl`}>
@@ -42,17 +45,23 @@ const CompanyInfo = [
     >
       <div class="wrapper lg:max-w-1/2 flex flex-col gap-10">
         <div class="image-wrapper overflow-hidden rounded-xl w-fit h-fit">
-          <Image src={TorontoCnRogers} alt="toronto overview" height={500} width={800} class="object-cover" />
+          <Image
+            src={TorontoCnRogers}
+            alt="toronto overview"
+            height={500}
+            width={800}
+            class="object-cover"
+          />
         </div>
         <div class="flex flex-col gap-10">
           <div class="description flex flex-col gap-5">
             <p>
-              Send us an email and let us know everything you want out of a new site. We respond to everyone within 24
-              hours of contacting us.
+              Send us an email and let us know everything you want out of a new site by selecting the project
+              consultation form.
             </p>
             <p>
               Got questions? We got answers, check out our FAQs section below for answers to our most common inquiries.
-              If your question isn't there, let us know using the contact form to the right.
+              If your question isn't there, let us know using the general inquiry form.
             </p>
           </div>
           <ul class="flex flex-col gap-4">
@@ -67,7 +76,11 @@ const CompanyInfo = [
     group-hover:text-primary"
                   >
                     <span class="icon-wrapper w-12 h-12 flex items-start justify-start text-primary transition-none">
-                      <Icon name={info.icon} class="h-full w-auto max-w-full max-h-full" style="aspect-ratio: 1;" />
+                      <Icon
+                        name={info.icon}
+                        class="h-full w-auto max-w-full max-h-full"
+                        style="aspect-ratio: 1;"
+                      />
                     </span>
                     <div class="group">
                       <p class="capitalize font-semibold group-hover:text-primary">{info.field}</p>

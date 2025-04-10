@@ -1,0 +1,571 @@
+---
+import type { Form as Props } from '~/types';
+import Button from '~/components/ui/Button.astro';
+
+interface ConsultationForm {
+  steps: {
+    title: string;
+    inputs?: {
+      type?:
+        | 'button'
+        | 'checkbox'
+        | 'color'
+        | 'date'
+        | 'datetime-local'
+        | 'email'
+        | 'file'
+        | 'hidden'
+        | 'image'
+        | 'month'
+        | 'number'
+        | 'password'
+        | 'radio'
+        | 'range'
+        | 'reset'
+        | 'search'
+        | 'submit'
+        | 'tel'
+        | 'text'
+        | 'time'
+        | 'url'
+        | 'week';
+      name: string;
+      label?: string;
+      autocomplete?: string;
+      placeholder?: string;
+      options?: {
+        value: string;
+        label: string;
+      }[];
+      required?: boolean;
+    }[];
+    textarea?: {
+      name: string;
+      label: string;
+      rows?: number;
+      placeholder: string;
+      required?: boolean;
+    };
+  }[];
+  disclaimer?: {
+    label: string;
+  };
+  button?: string;
+  description?: string;
+}
+
+const {
+  steps,
+  disclaimer,
+  button = 'Submit Project Details',
+  description = "We'll review your project details and get back to you within 24-48 hours.",
+} = Astro.props as ConsultationForm;
+
+// Generate a unique ID for this form instance
+const formId = `consultation-form-${Math.random().toString(36).substring(2, 9)}`;
+---
+
+<form
+  id={formId}
+  name="project-consultation"
+  method="POST"
+  data-netlify="true"
+  class="consultation-form"
+  novalidate
+>
+  <input
+    type="hidden"
+    name="form-name"
+    value="project-consultation"
+  />
+
+  <!-- Step indicator -->
+  <div class="step-indicator mb-8">
+    <div class="flex justify-between">
+      {
+        steps.map((step, index) => (
+          <div
+            class="step-indicator-item"
+            data-step={index + 1}
+          >
+            <div
+              class={`step-number flex items-center justify-center rounded-full w-8 h-8 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white ${index === 0 ? 'bg-primary-600 dark:bg-primary-500 text-white' : ''}`}
+            >
+              {index + 1}
+            </div>
+            <div class="step-title text-xs mt-2 text-center text-gray-600 dark:text-gray-400">{step.title}</div>
+          </div>
+        ))
+      }
+    </div>
+    <div class="step-progress-bar h-1 mt-4 bg-gray-200 dark:bg-gray-700 rounded-full">
+      <div
+        class="step-progress-bar-fill h-full w-0 bg-primary-600 dark:bg-primary-500 rounded-full transition-all duration-300"
+      >
+      </div>
+    </div>
+  </div>
+
+  <!-- Form steps -->
+  {
+    steps.map((step, stepIndex) => (
+      <div
+        class={`form-step ${stepIndex === 0 ? 'active' : 'hidden'}`}
+        data-step={stepIndex + 1}
+      >
+        <h3 class="text-xl font-semibold mb-4 text-gray-800 dark:text-white">{step.title}</h3>
+
+        {step.inputs &&
+          step.inputs.map(
+            ({
+              type = 'text',
+              name,
+              label = '',
+              autocomplete = 'on',
+              placeholder = '',
+              options = [],
+              required = false,
+            }) => (
+              <div class="mb-4">
+                {label && (
+                  <label
+                    for={`${name}-${stepIndex}`}
+                    class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  >
+                    {label} {required && <span class="text-red-600">*</span>}
+                  </label>
+                )}
+
+                {type === 'select' ? (
+                  <select
+                    id={`${name}-${stepIndex}`}
+                    name={name}
+                    class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 text-md"
+                    required={required}
+                  >
+                    <option value="">Please select...</option>
+                    {options.map((option) => (
+                      <option value={option.value}>{option.label}</option>
+                    ))}
+                  </select>
+                ) : type === 'radio' ? (
+                  <div class="space-y-2">
+                    {options.map((option) => (
+                      <div class="flex items-center">
+                        <input
+                          type="radio"
+                          id={`${name}-${option.value}`}
+                          name={name}
+                          value={option.value}
+                          class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 dark:border-gray-700"
+                          required={required}
+                        />
+                        <label
+                          for={`${name}-${option.value}`}
+                          class="ml-2 block text-sm text-gray-700 dark:text-gray-300"
+                        >
+                          {option.label}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <input
+                    type={type}
+                    id={`${name}-${stepIndex}`}
+                    name={name}
+                    placeholder={placeholder}
+                    autocomplete={autocomplete}
+                    class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 text-md"
+                    required={required}
+                  />
+                )}
+              </div>
+            )
+          )}
+
+        {step.textarea && (
+          <div class="mb-4">
+            <label
+              for={step.textarea.name}
+              class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+            >
+              {step.textarea.label} {step.textarea.required && <span class="text-red-600">*</span>}
+            </label>
+            <textarea
+              id={step.textarea.name}
+              name={step.textarea.name}
+              rows={step.textarea.rows || 4}
+              placeholder={step.textarea.placeholder}
+              class="w-full px-4 py-3 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 text-md"
+              required={step.textarea.required}
+            />
+          </div>
+        )}
+
+        <div class="flex justify-between mt-6">
+          {stepIndex > 0 && stepIndex < steps.length - 1 && (
+            <Button
+              type="button"
+              variant="secondary"
+              class="prev-step"
+              data-step={stepIndex}
+            >
+              Back
+            </Button>
+          )}
+
+          {stepIndex < steps.length - 1 ? (
+            <Button
+              type="button"
+              variant="primary"
+              class={`next-step ml-auto ${stepIndex > 0 ? '' : ''}`}
+              data-step={stepIndex + 2}
+            >
+              Next
+            </Button>
+          ) : (
+            <div class="ml-auto">
+              {disclaimer && (
+                <div class="mb-6 flex items-start">
+                  <div class="flex mt-0.5">
+                    <input
+                      id="disclaimer"
+                      name="disclaimer"
+                      type="checkbox"
+                      class="cursor-pointer mt-1 w-4 h-4 text-primary-600 rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
+                      required
+                    />
+                  </div>
+                  <div class="ml-3">
+                    <label
+                      for="disclaimer"
+                      class="cursor-pointer select-none text-sm text-gray-600 dark:text-gray-400"
+                    >
+                      {disclaimer.label}
+                    </label>
+                  </div>
+                </div>
+              )}
+              <div class="flex justify-between mt-6">
+                <Button
+                  type="button"
+                  variant="secondary"
+                  class="prev-step"
+                  data-step={stepIndex}
+                >
+                  Back
+                </Button>
+                <Button
+                  variant="primary"
+                  type="submit"
+                >
+                  {button}
+                </Button>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    ))
+  }
+
+  {
+    description && (
+      <div class="mt-3 text-center">
+        <p class="text-sm text-gray-600 dark:text-gray-400">{description}</p>
+      </div>
+    )
+  }
+</form>
+
+<style>
+  .consultation-form .step-indicator-item {
+    flex: 1;
+    position: relative;
+  }
+
+  .consultation-form .step-indicator-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    left: 50%;
+    width: 100%;
+    height: 1px;
+    background-color: #e5e7eb;
+  }
+
+  .consultation-form .step-indicator-item .step-number {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+  }
+
+  .consultation-form .step-progress-bar {
+    max-width: 100%;
+  }
+</style>
+
+<script define:vars={{ formId, stepsCount: steps.length }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById(formId);
+    if (!form) return;
+
+    const steps = form.querySelectorAll('.form-step');
+    const prevButtons = form.querySelectorAll('.prev-step');
+    const nextButtons = form.querySelectorAll('.next-step');
+    const progressBar = form.querySelector('.step-progress-bar-fill');
+    const stepIndicators = form.querySelectorAll('.step-number');
+
+    // Set initial progress
+    progressBar.style.width = `${100 / stepsCount}%`;
+
+    // Function to clear validation messages
+    const clearValidationMessages = (container) => {
+      const errorMessages = container.querySelectorAll('.validation-message');
+      errorMessages.forEach((msg) => msg.remove());
+    };
+
+    // Handle next button clicks
+    nextButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const currentStep = form.querySelector('.form-step.active');
+        const currentStepNum = parseInt(currentStep.dataset.step);
+        const nextStepNum = parseInt(button.dataset.step);
+
+        // Clear previous validation messages
+        clearValidationMessages(currentStep);
+
+        // Validate current step before proceeding
+        const inputs = currentStep.querySelectorAll('input[required], select[required], textarea[required]');
+        let isValid = true;
+
+        inputs.forEach((input) => {
+          if (input.type === 'radio') {
+            // For radio buttons, check if any in the group is checked
+            const name = input.name;
+            const checkedRadio = currentStep.querySelector(`input[name="${name}"]:checked`);
+
+            if (!checkedRadio) {
+              isValid = false;
+              // Find the radio group container
+              const radioGroup = input.closest('.space-y-2');
+              if (radioGroup && !radioGroup.querySelector('.validation-message')) {
+                const errorMsg = document.createElement('p');
+                errorMsg.className = 'validation-message text-red-600 text-sm mt-1';
+                errorMsg.textContent = 'Please select an option';
+                radioGroup.appendChild(errorMsg);
+              }
+            }
+          } else if (input.type === 'checkbox' && !input.checked) {
+            isValid = false;
+            input.classList.add('border-red-500');
+
+            // Add error message
+            const parent = input.closest('div').parentNode;
+            if (!parent.querySelector('.validation-message')) {
+              const errorMsg = document.createElement('p');
+              errorMsg.className = 'validation-message text-red-600 text-sm mt-1';
+              errorMsg.textContent = 'Please accept the terms to continue';
+              parent.appendChild(errorMsg);
+            }
+          } else if (!input.value.trim()) {
+            isValid = false;
+            input.classList.add('border-red-500');
+
+            // Add error message
+            const parent = input.parentNode;
+            if (!parent.querySelector('.validation-message')) {
+              const errorMsg = document.createElement('p');
+              errorMsg.className = 'validation-message text-red-600 text-sm mt-1';
+              errorMsg.textContent = 'This field is required';
+              parent.appendChild(errorMsg);
+            }
+          } else {
+            input.classList.remove('border-red-500');
+          }
+        });
+
+        if (!isValid) return;
+
+        // Show next step
+        currentStep.classList.remove('active');
+        currentStep.classList.add('hidden');
+
+        const nextStep = form.querySelector(`.form-step[data-step="${nextStepNum}"]`);
+        nextStep.classList.remove('hidden');
+        nextStep.classList.add('active');
+
+        // Update progress bar
+        progressBar.style.width = `${(nextStepNum / stepsCount) * 100}%`;
+
+        // Update step indicators
+        stepIndicators.forEach((indicator, index) => {
+          if (index < nextStepNum) {
+            indicator.classList.add('bg-primary-600', 'dark:bg-primary-500', 'text-white');
+            indicator.classList.remove('bg-gray-200', 'dark:bg-gray-700');
+          }
+        });
+      });
+    });
+
+    // Handle previous button clicks
+    prevButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const currentStep = form.querySelector('.form-step.active');
+        const prevStepNum = parseInt(button.dataset.step);
+
+        currentStep.classList.remove('active');
+        currentStep.classList.add('hidden');
+
+        const prevStep = form.querySelector(`.form-step[data-step="${prevStepNum}"]`);
+        prevStep.classList.remove('hidden');
+        prevStep.classList.add('active');
+
+        // Update progress bar
+        progressBar.style.width = `${(prevStepNum / stepsCount) * 100}%`;
+
+        // Update step indicators
+        stepIndicators.forEach((indicator, index) => {
+          if (index >= prevStepNum) {
+            indicator.classList.remove('bg-primary-600', 'dark:bg-primary-500', 'text-white');
+            indicator.classList.add('bg-gray-200', 'dark:bg-gray-700');
+          }
+        });
+      });
+    });
+
+    // Add form submission validation
+    form.addEventListener('submit', (event) => {
+      const currentStep = form.querySelector('.form-step.active');
+      clearValidationMessages(currentStep);
+
+      // Validate current step before submission
+      const inputs = currentStep.querySelectorAll('input[required], select[required], textarea[required]');
+      let isValid = true;
+
+      inputs.forEach((input) => {
+        if (input.type === 'radio') {
+          // For radio buttons, check if any in the group is checked
+          const name = input.name;
+          const checkedRadio = currentStep.querySelector(`input[name="${name}"]:checked`);
+
+          if (!checkedRadio) {
+            isValid = false;
+            // Find the radio group container
+            const radioGroup = input.closest('.space-y-2');
+            if (radioGroup && !radioGroup.querySelector('.validation-message')) {
+              const errorMsg = document.createElement('p');
+              errorMsg.className = 'validation-message text-red-600 text-sm mt-1';
+              errorMsg.textContent = 'Please select an option';
+              radioGroup.appendChild(errorMsg);
+            }
+          }
+        } else if (input.type === 'checkbox' && !input.checked) {
+          isValid = false;
+          input.classList.add('border-red-500');
+
+          // Add error message
+          const parent = input.closest('div').parentNode;
+          if (!parent.querySelector('.validation-message')) {
+            const errorMsg = document.createElement('p');
+            errorMsg.className = 'validation-message text-red-600 text-sm mt-1';
+            errorMsg.textContent = 'Please accept the terms to continue';
+            parent.appendChild(errorMsg);
+          }
+        } else if (!input.value.trim()) {
+          isValid = false;
+          input.classList.add('border-red-500');
+
+          // Add error message
+          const parent = input.parentNode;
+          if (!parent.querySelector('.validation-message')) {
+            const errorMsg = document.createElement('p');
+            errorMsg.className = 'validation-message text-red-600 text-sm mt-1';
+            errorMsg.textContent = 'This field is required';
+            parent.appendChild(errorMsg);
+          }
+        } else {
+          input.classList.remove('border-red-500');
+        }
+      });
+
+      if (!isValid) {
+        event.preventDefault();
+      }
+    });
+
+    // Remove error styling as user interacts with fields
+    form.querySelectorAll('input, textarea, select').forEach((field) => {
+      const eventType = field.type === 'checkbox' || field.type === 'radio' ? 'change' : 'input';
+
+      field.addEventListener(eventType, function () {
+        this.classList.remove('border-red-500');
+
+        // Find and remove error message
+        let parent;
+        if (field.type === 'checkbox' || field.type === 'radio') {
+          parent = field.type === 'radio' ? field.closest('.space-y-2') : field.closest('div').parentNode;
+        } else {
+          parent = field.parentNode;
+        }
+
+        if (parent) {
+          const errorMsg = parent.querySelector('.validation-message');
+          if (errorMsg) {
+            errorMsg.remove();
+          }
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .consultation-form .step-indicator-item {
+    flex: 1;
+    position: relative;
+  }
+
+  .consultation-form .step-indicator-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    width: 100%;
+    height: 1px;
+    background-color: #e5e7eb;
+  }
+
+  .consultation-form .step-indicator-item .step-number {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+  }
+
+  .consultation-form .step-progress-bar {
+    max-width: 100%;
+  }
+
+  /* Add these new styles for validation */
+  .validation-message {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  input.border-red-500,
+  textarea.border-red-500,
+  select.border-red-500 {
+    background-color: rgba(239, 68, 68, 0.05);
+  }
+</style>

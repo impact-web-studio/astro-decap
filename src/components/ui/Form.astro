@@ -2,19 +2,71 @@
 import type { Form as Props } from '~/types';
 import Button from '~/components/ui/Button.astro';
 
-const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props;
+interface Prop {
+  inputs?: {
+    type?:
+      | 'button'
+      | 'checkbox'
+      | 'color'
+      | 'date'
+      | 'datetime-local'
+      | 'email'
+      | 'file'
+      | 'hidden'
+      | 'image'
+      | 'month'
+      | 'number'
+      | 'password'
+      | 'radio'
+      | 'range'
+      | 'reset'
+      | 'search'
+      | 'submit'
+      | 'tel'
+      | 'text'
+      | 'time'
+      | 'url'
+      | 'week';
+    name: string;
+    label?: string;
+    autocomplete?: string;
+    placeholder?: string;
+    required?: boolean;
+  }[];
+  textarea?: {
+    name?: string;
+    label: string;
+    rows?: number;
+    placeholder: string;
+    required?: boolean;
+  };
+  disclaimer?: {
+    label: string;
+  };
+  button?: string;
+  description?: string;
+}
+
+const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props as Prop;
 ---
 
-<form data-netlify="true" name="Contact Form">
+<form
+  data-netlify="true"
+  name="Contact Form"
+  id="general-contact-form"
+>
   {
     inputs &&
       inputs.map(
-        ({ type = 'text', name, label = '', autocomplete = 'on', placeholder = '' }) =>
+        ({ type = 'text', name, label = '', autocomplete = 'on', placeholder = '', required = true }) =>
           name && (
             <div class="mb-6">
               {label && (
-                <label for={name} class="block text-sm font-medium">
-                  {label}
+                <label
+                  for={name}
+                  class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                >
+                  {label} {required && <span class="text-red-600">*</span>}
                 </label>
               )}
               <input
@@ -23,6 +75,7 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
                 id={name}
                 autocomplete={autocomplete}
                 placeholder={placeholder}
+                required={required}
                 class="py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
               />
             </div>
@@ -32,15 +85,19 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
 
   {
     textarea && (
-      <div>
-        <label for="textarea" class="block text-sm font-medium">
-          {textarea.label}
+      <div class="mb-6">
+        <label
+          for="textarea"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+        >
+          {textarea.label} {textarea.required !== false && <span class="text-red-600">*</span>}
         </label>
         <textarea
           id="textarea"
           name={textarea.name ? textarea.name : 'message'}
           rows={textarea.rows ? textarea.rows : 4}
           placeholder={textarea.placeholder}
+          required={textarea.required !== false}
           class="py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
         />
       </div>
@@ -49,18 +106,22 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
 
   {
     disclaimer && (
-      <div class="mt-3 flex items-start">
+      <div class="mt-6 mb-6 flex items-start">
         <div class="flex mt-0.5">
           <input
             id="disclaimer"
             name="disclaimer"
             type="checkbox"
-            class="cursor-pointer mt-1 py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
+            required
+            class="cursor-pointer mt-1 w-4 h-4 text-primary-600 rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
           />
         </div>
         <div class="ml-3">
-          <label for="disclaimer" class="cursor-pointer select-none text-sm text-gray-600 dark:text-gray-400">
-            {disclaimer.label}
+          <label
+            for="disclaimer"
+            class="cursor-pointer select-none text-sm text-gray-600 dark:text-gray-400"
+          >
+            {disclaimer.label} <span class="text-red-600">*</span>
           </label>
         </div>
       </div>
@@ -69,8 +130,11 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
 
   {
     button && (
-      <div class="mt-10 grid">
-        <Button variant="primary" type="submit">
+      <div class="mt-8 grid">
+        <Button
+          variant="primary"
+          type="submit"
+        >
           {button}
         </Button>
       </div>
@@ -85,3 +149,110 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
     )
   }
 </form>
+
+<script define:vars={{ formId: 'general-contact-form' }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById(formId);
+    if (!form) return;
+
+    // Function to clear validation messages
+    const clearValidationMessages = (container) => {
+      const errorMessages = container.querySelectorAll('.validation-message');
+      errorMessages.forEach((msg) => msg.remove());
+    };
+
+    // Handle form submission
+    form.addEventListener('submit', (event) => {
+      // Clear previous validation messages
+      clearValidationMessages(form);
+
+      const inputs = form.querySelectorAll('input[required], textarea[required], select[required]');
+      let isValid = true;
+
+      // Validate all required fields
+      inputs.forEach((input) => {
+        // Special handling for checkbox
+        if (input.type === 'checkbox' && !input.checked) {
+          isValid = false;
+          input.classList.add('border-red-500');
+
+          // Add error message below the checkbox
+          const parent = input.closest('div').parentNode;
+          if (!parent.querySelector('.validation-message')) {
+            const errorMsg = document.createElement('p');
+            errorMsg.className = 'validation-message text-red-600 text-sm mt-1';
+            errorMsg.textContent = 'Please accept the terms to continue';
+            parent.appendChild(errorMsg);
+          }
+        }
+        // Handle other input types
+        else if (input.type !== 'checkbox' && !input.value.trim()) {
+          isValid = false;
+          input.classList.add('border-red-500');
+
+          // Add error message below the input
+          const parent = input.parentNode;
+          if (!parent.querySelector('.validation-message')) {
+            const errorMsg = document.createElement('p');
+            errorMsg.className = 'validation-message text-red-600 text-sm mt-1';
+            errorMsg.textContent = 'This field is required';
+            parent.appendChild(errorMsg);
+          }
+        } else {
+          input.classList.remove('border-red-500');
+        }
+      });
+
+      if (!isValid) {
+        event.preventDefault();
+      }
+    });
+
+    // Remove error styling as user interacts with fields
+    form.querySelectorAll('input, textarea, select').forEach((field) => {
+      const eventType = field.type === 'checkbox' ? 'change' : 'input';
+
+      field.addEventListener(eventType, function () {
+        this.classList.remove('border-red-500');
+
+        // Find and remove error message
+        let parent;
+        if (field.type === 'checkbox') {
+          parent = field.closest('div').parentNode;
+        } else {
+          parent = field.parentNode;
+        }
+
+        if (parent) {
+          const errorMsg = parent.querySelector('.validation-message');
+          if (errorMsg) {
+            errorMsg.remove();
+          }
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .validation-message {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-5px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  input.border-red-500,
+  textarea.border-red-500,
+  select.border-red-500 {
+    background-color: rgba(239, 68, 68, 0.05);
+  }
+</style>

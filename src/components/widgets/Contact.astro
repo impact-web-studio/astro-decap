@@ -1,39 +1,263 @@
 ---
 import FormContainer from '~/components/ui/Form.astro';
-import Headline from '~/components/ui/Headline.astro';
+import ConsultationForm from '~/components/ui/ConsultationForm.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
-import type { Contact as Props } from '~/types';
 
-const {
-  title = await Astro.slots.render('title'),
-  // subtitle = await Astro.slots.render('subtitle'),
-  // tagline = await Astro.slots.render('tagline'),
-  inputs,
-  textarea,
-  disclaimer,
-  button,
-  description,
+const contactFormInputs = [
+  {
+    type: 'text',
+    name: 'name',
+    label: 'Name',
+    placeholder: 'Your name',
+    required: true,
+  },
+  {
+    type: 'email',
+    name: 'email',
+    label: 'Email',
+    placeholder: 'Your email address',
+    autocomplete: 'email',
+    required: true,
+  },
+];
 
-  id,
-  isDark = false,
-  classes = {},
-  bg = await Astro.slots.render('bg'),
-} = Astro.props;
+const contactFormTextarea = {
+  name: 'message',
+  label: 'Message',
+  placeholder: 'Your message',
+  rows: 5,
+  required: true,
+};
+
+const consultationFormSteps = [
+  {
+    title: 'Basic Info',
+    inputs: [
+      {
+        type: 'text',
+        name: 'name',
+        label: 'Name',
+        placeholder: 'Your name',
+        required: true,
+      },
+      {
+        type: 'email',
+        name: 'email',
+        label: 'Email',
+        placeholder: 'Your email address',
+        autocomplete: 'email',
+        required: true,
+      },
+      {
+        type: 'tel',
+        name: 'phone',
+        label: 'Phone (optional)',
+        placeholder: 'Your phone number',
+        autocomplete: 'tel',
+      },
+      {
+        type: 'text',
+        name: 'company',
+        label: 'Company/Organization (optional)',
+        placeholder: 'Your company or organization',
+      },
+    ],
+  },
+  {
+    title: 'Project Details',
+    inputs: [
+      {
+        type: 'select',
+        name: 'project_type',
+        label: 'What type of project are you looking for?',
+        options: [
+          { value: 'new_website', label: 'New Website' },
+          { value: 'redesign', label: 'Website Redesign' },
+          { value: 'ecommerce', label: 'E-commerce Website' },
+          { value: 'maintenance', label: 'Website Maintenance' },
+          { value: 'seo', label: 'SEO Services' },
+          { value: 'other', label: 'Other' },
+        ],
+        required: true,
+      },
+      {
+        type: 'select',
+        name: 'timeline',
+        label: 'What is your timeline?',
+        options: [
+          { value: 'asap', label: 'As soon as possible' },
+          { value: '1month', label: 'Within 1 month' },
+          { value: '3months', label: 'Within 3 months' },
+          { value: 'flexible', label: 'Flexible' },
+        ],
+        required: true,
+      },
+    ],
+    textarea: {
+      name: 'project_description',
+      label: 'Tell us about your project',
+      placeholder: 'Please describe your project, goals, and any specific requirements',
+      rows: 5,
+      required: true,
+    },
+  },
+  {
+    title: 'Package & Goals',
+    inputs: [
+      {
+        type: 'select',
+        name: 'package',
+        label: 'What package are you interested in?',
+        options: [
+          { value: 'business_essential', label: 'Business Essential ($0 down + $150/mo)' },
+          { value: 'monthly', label: 'Monthly ($4980 + $25/mo)' },
+          { value: 'enterprise', label: 'Enterprise (from $12900)' },
+          { value: 'custom', label: 'Custom Package' },
+          { value: 'not_sure', label: 'Not sure yet' },
+        ],
+        required: true,
+      },
+      {
+        type: 'radio',
+        name: 'priority',
+        label: 'What is your top priority?',
+        options: [
+          { value: 'design', label: 'Outstanding design' },
+          { value: 'functionality', label: 'Specific functionality' },
+          { value: 'seo', label: 'Search engine visibility' },
+          { value: 'speed', label: 'Website speed/performance' },
+          { value: 'ease', label: 'Ease of maintenance' },
+        ],
+        required: true,
+      },
+    ],
+    textarea: {
+      name: 'additional_info',
+      label: 'Anything else we should know?',
+      placeholder: 'Any additional information, questions, or specific requirements',
+      rows: 4,
+    },
+  },
+];
+
+const disclaimerText = {
+  label: 'I agree to the privacy policy and consent to being contacted regarding my project inquiry.',
+};
 ---
 
-<WidgetWrapper id={id} isDark={isDark} containerClass={`max-w-7xl mx-auto ${classes?.container ?? ''}`} bg={bg}>
-  {
-    inputs && (
-      <div class="flex flex-col max-w-xl mx-auto rounded-lg backdrop-blur border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900 shadow py-4 px-3 sm:p-6 lg:p-8 w-full">
-        <Headline title={title} classes={{ container: '!mx-0', title: 'text-left', subtitle: 'text-left' }} />
+<WidgetWrapper containerClass="!py-0">
+  <div class="bg-white dark:bg-slate-900 rounded-lg shadow-md p-6 md:p-8">
+    <!-- Form Type Selection -->
+    <div class="form-type-tabs flex border-b border-gray-200 dark:border-gray-700 mb-8">
+      <button
+        id="general-tab"
+        class="tab-button py-3 px-6 font-medium text-sm border-b-2 border-primary-600 text-primary-600 dark:text-primary-400 dark:border-primary-400"
+        aria-selected="true"
+      >
+        General Inquiry Form
+      </button>
+      <button
+        id="consultation-tab"
+        class="tab-button py-3 px-6 font-medium text-sm border-b-2 border-transparent text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
+        aria-selected="false"
+      >
+        Project Consultation Form
+      </button>
+    </div>
+
+    <!-- Form Containers -->
+    <div
+      id="general-form-container"
+      class="form-container block"
+    >
+      <div class="max-w-2xl mx-auto">
         <FormContainer
-          inputs={inputs}
-          textarea={textarea}
-          disclaimer={disclaimer}
-          button={button}
-          description={description}
+          inputs={contactFormInputs}
+          textarea={contactFormTextarea}
+          disclaimer={disclaimerText}
+          button="Send Message"
+          description="We'll get back to you within 24-48 hours."
         />
       </div>
-    )
-  }
+    </div>
+
+    <div
+      id="consultation-form-container"
+      class="form-container hidden"
+    >
+      <ConsultationForm
+        steps={consultationFormSteps}
+        disclaimer={disclaimerText}
+        button="Submit Project Details"
+        description="We'll review your project details and reach out within 1-2 business days."
+      />
+    </div>
+  </div>
 </WidgetWrapper>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const generalTab = document.getElementById('general-tab');
+    const consultationTab = document.getElementById('consultation-tab');
+    const generalFormContainer = document.getElementById('general-form-container');
+    const consultationFormContainer = document.getElementById('consultation-form-container');
+
+    if (!generalTab || !consultationTab || !generalFormContainer || !consultationFormContainer) return;
+
+    // Switch to general form
+    generalTab.addEventListener('click', () => {
+      // Update tab states
+      generalTab.classList.add(
+        'border-primary-600',
+        'text-primary-600',
+        'dark:text-primary-400',
+        'dark:border-primary-400'
+      );
+      generalTab.classList.remove('border-transparent', 'text-gray-500', 'dark:text-gray-400');
+      generalTab.setAttribute('aria-selected', 'true');
+
+      consultationTab.classList.add('border-transparent', 'text-gray-500', 'dark:text-gray-400');
+      consultationTab.classList.remove(
+        'border-primary-600',
+        'text-primary-600',
+        'dark:text-primary-400',
+        'dark:border-primary-400'
+      );
+      consultationTab.setAttribute('aria-selected', 'false');
+
+      // Show/hide forms
+      generalFormContainer.classList.remove('hidden');
+      generalFormContainer.classList.add('block');
+      consultationFormContainer.classList.add('hidden');
+      consultationFormContainer.classList.remove('block');
+    });
+
+    // Switch to consultation form
+    consultationTab.addEventListener('click', () => {
+      // Update tab states
+      consultationTab.classList.add(
+        'border-primary-600',
+        'text-primary-600',
+        'dark:text-primary-400',
+        'dark:border-primary-400'
+      );
+      consultationTab.classList.remove('border-transparent', 'text-gray-500', 'dark:text-gray-400');
+      consultationTab.setAttribute('aria-selected', 'true');
+
+      generalTab.classList.add('border-transparent', 'text-gray-500', 'dark:text-gray-400');
+      generalTab.classList.remove(
+        'border-primary-600',
+        'text-primary-600',
+        'dark:text-primary-400',
+        'dark:border-primary-400'
+      );
+      generalTab.setAttribute('aria-selected', 'false');
+
+      // Show/hide forms
+      consultationFormContainer.classList.remove('hidden');
+      consultationFormContainer.classList.add('block');
+      generalFormContainer.classList.add('hidden');
+      generalFormContainer.classList.remove('block');
+    });
+  });
+</script>
