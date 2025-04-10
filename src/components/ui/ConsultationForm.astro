@@ -23,6 +23,7 @@ interface ConsultationForm {
         | 'range'
         | 'reset'
         | 'search'
+        | 'select'
         | 'submit'
         | 'tel'
         | 'text'
@@ -67,7 +68,7 @@ const formId = `consultation-form-${Math.random().toString(36).substring(2, 9)}`
 
 <form
   id={formId}
-  name="project-consultation"
+  name="Consultation Form"
   method="POST"
   data-netlify="true"
   class="consultation-form"
@@ -311,7 +312,7 @@ const formId = `consultation-form-${Math.random().toString(36).substring(2, 9)}`
     const form = document.getElementById(formId);
     if (!form) return;
 
-    const steps = form.querySelectorAll('.form-step');
+    // const steps = form.querySelectorAll('.form-step');
     const prevButtons = form.querySelectorAll('.prev-step');
     const nextButtons = form.querySelectorAll('.next-step');
     const progressBar = form.querySelector('.step-progress-bar-fill');

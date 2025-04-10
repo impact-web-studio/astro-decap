@@ -50,7 +50,11 @@ interface Prop {
 const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props as Prop;
 ---
 
-<form data-netlify="true" name="Contact Form" id="general-contact-form">
+<form
+  data-netlify="true"
+  name="Contact Form"
+  id="general-contact-form"
+>
   {
     inputs &&
       inputs.map(
@@ -58,7 +62,10 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
           name && (
             <div class="mb-6">
               {label && (
-                <label for={name} class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                <label
+                  for={name}
+                  class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                >
                   {label} {required && <span class="text-red-600">*</span>}
                 </label>
               )}
@@ -79,7 +86,10 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
   {
     textarea && (
       <div class="mb-6">
-        <label for="textarea" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <label
+          for="textarea"
+          class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+        >
           {textarea.label} {textarea.required !== false && <span class="text-red-600">*</span>}
         </label>
         <textarea
@@ -107,7 +117,10 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
           />
         </div>
         <div class="ml-3">
-          <label for="disclaimer" class="cursor-pointer select-none text-sm text-gray-600 dark:text-gray-400">
+          <label
+            for="disclaimer"
+            class="cursor-pointer select-none text-sm text-gray-600 dark:text-gray-400"
+          >
             {disclaimer.label} <span class="text-red-600">*</span>
           </label>
         </div>
@@ -118,7 +131,10 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
   {
     button && (
       <div class="mt-8 grid">
-        <Button variant="primary" type="submit">
+        <Button
+          variant="primary"
+          type="submit"
+        >
           {button}
         </Button>
       </div>
