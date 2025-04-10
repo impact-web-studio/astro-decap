@@ -308,7 +308,7 @@ const formId = `consultation-form-${Math.random().toString(36).substring(2, 9)}`
 </style>
 
 <script define:vars={{ formId, stepsCount: steps.length }}>
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('astro:page-load', () => {
     const form = document.getElementById(formId);
     if (!form) return;
 
