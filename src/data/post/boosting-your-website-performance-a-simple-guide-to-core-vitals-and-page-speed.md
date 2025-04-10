@@ -1,6 +1,6 @@
 ---
-title: "Boosting Your Website Performance: A Simple Guide to Core Vitals and
-  Page Speed"
+title: 'Boosting Your Website Performance: A Simple Guide to Core Vitals and
+  Page Speed'
 excerpt: Learn how to improve your website's speed and user experience with
   practical tips for both business owners and developers.
 category: Developer Guide, Business Resource

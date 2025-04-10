@@ -320,6 +320,16 @@ const formId = `consultation-form-${Math.random().toString(36).substring(2, 9)}`
     // Set initial progress
     progressBar.style.width = `${100 / stepsCount}%`;
 
+    // Set initial styles for the first step
+    const stepIndicatorItems = form.querySelectorAll('.step-indicator-item > .step-number');
+    stepIndicatorItems.forEach((indicator, index) => {
+      if (index === 0) {
+        indicator.classList.add('bg-gray-100', 'dark:bg-gray-500', 'text-white');
+      } else {
+        indicator.classList.add('bg-gray-200', 'dark:bg-gray-700');
+      }
+    });
+
     // Function to clear validation messages
     const clearValidationMessages = (container) => {
       const errorMessages = container.querySelectorAll('.validation-message');
@@ -367,7 +377,7 @@ const formId = `consultation-form-${Math.random().toString(36).substring(2, 9)}`
               const errorMsg = document.createElement('p');
               errorMsg.className = 'validation-message text-red-600 text-sm mt-1';
               errorMsg.textContent = 'Please accept the terms to continue';
-              parent.appendChild(errorMsg);
+              parent.insertAdjacentElement('afterend', errorMsg);
             }
           } else if (!input.value.trim()) {
             isValid = false;
@@ -401,9 +411,13 @@ const formId = `consultation-form-${Math.random().toString(36).substring(2, 9)}`
 
         // Update step indicators
         stepIndicators.forEach((indicator, index) => {
-          if (index < nextStepNum) {
-            indicator.classList.add('bg-primary-600', 'dark:bg-primary-500', 'text-white');
+          if (index == currentStepNum) {
+            console.log('current step num: ', currentStepNum);
+            indicator.classList.add('bg-gray-100', 'dark:bg-gray-500', 'text-white');
             indicator.classList.remove('bg-gray-200', 'dark:bg-gray-700');
+          } else {
+            indicator.classList.remove('bg-gray-100', 'dark:bg-gray-500', 'text-white');
+            indicator.classList.add('bg-gray-200', 'dark:bg-gray-700');
           }
         });
       });
@@ -471,7 +485,7 @@ const formId = `consultation-form-${Math.random().toString(36).substring(2, 9)}`
             const errorMsg = document.createElement('p');
             errorMsg.className = 'validation-message text-red-600 text-sm mt-1';
             errorMsg.textContent = 'Please accept the terms to continue';
-            parent.appendChild(errorMsg);
+            parent.insertAdjacentElement('afterend', errorMsg);
           }
         } else if (!input.value.trim()) {
           isValid = false;
